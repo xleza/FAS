@@ -16,5 +16,16 @@ namespace FAS.UI
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var dialog = new EnrollmentForm();
+            dialog.ShowDialog();
+
+            if (dialog.DialogResult == DialogResult.OK)
+            {
+                var data = dialog.FingerPrintEnrollmentData;
+            }
+        }
     }
 }
