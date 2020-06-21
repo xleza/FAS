@@ -3,6 +3,6 @@
     public enum SessionStatus
     {
         Current,
-        End
+        Finished
     }
 }
