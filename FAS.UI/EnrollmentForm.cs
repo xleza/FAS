@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using FAS.Scanner.DigitalPersona;
+using FAS.Core;
 
 namespace FAS.UI
 {
     public partial class EnrollmentForm : Form
     {
-        private Enroller _enroller;
+        private readonly IEnroller _enroller;
         public byte[] FingerPrintEnrollmentData { get; private set; }
 
-        public EnrollmentForm()
+        public EnrollmentForm(IEnroller enroller)
         {
             InitializeComponent();
+            _enroller = enroller;
         }
 
         private void EnrollmentForm_Load(object sender, EventArgs e)
         {
-            _enroller = new Enroller();
             _enroller.Connect += OnConnect;
             _enroller.Disconnect += OnDisconnect;
             _enroller.Capture += OnCapture;

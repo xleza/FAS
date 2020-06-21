@@ -3,11 +3,12 @@ using System.Drawing;
 using DPFP;
 using DPFP.Capture;
 using DPFP.Processing;
+using FAS.Core;
 using EventHandler = System.EventHandler;
 
 namespace FAS.Scanner.DigitalPersona
 {
-    public sealed class Enroller : IDisposable
+    public sealed class Enroller : IEnroller
     {
         public event EventHandler Connect;
         public event EventHandler Disconnect;
