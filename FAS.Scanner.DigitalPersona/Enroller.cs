@@ -13,7 +13,7 @@ namespace FAS.Scanner.DigitalPersona
         public event EventHandler Connect;
         public event EventHandler Disconnect;
         public event EventHandler<Bitmap> Capture;
-        public event EventHandler<byte[]> Success;
+        public event EventHandler<(byte[] checkSum, Bitmap picture)> Success;
         public event EventHandler Fail;
 
 
@@ -52,14 +52,14 @@ namespace FAS.Scanner.DigitalPersona
             }
 
             if (_enroller.TemplateStatus == Enrollment.Status.Ready)
-                Success?.Invoke(this, _enroller.Template.Bytes);
+                Success?.Invoke(this, (_enroller.Template.Bytes, bitmap));
             else if (_enroller.TemplateStatus == Enrollment.Status.Failed)
                 Fail?.Invoke(this, null);
         }
 
         private void OnDisconnect(object sender, EventArgs e) => Disconnect?.Invoke(this, e);
 
-        private void OnSuccess(object sender, byte[] e)
+        private void OnSuccess(object sender, (byte[] checkSum, Bitmap bitmap) e)
         {
             _enroller.Clear();
         }

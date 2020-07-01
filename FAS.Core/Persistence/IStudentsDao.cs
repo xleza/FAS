@@ -3,9 +3,9 @@ using FAS.Core.Entities;
 
 namespace FAS.Core.Persistence
 {
-    public interface IUsersRepository
+    public interface IStudentsDao
     {
-        Task<Student> GetByIdAsync(string id);
+        Task<Student> GetAsync(string id);
         Task AddAsync(Student student);
         Task UpdateAsync(Student student);
     }

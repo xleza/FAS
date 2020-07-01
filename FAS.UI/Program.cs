@@ -2,6 +2,9 @@
 using System.Configuration;
 using System.Windows.Forms;
 using FAS.Core;
+using FAS.Core.Persistence;
+using FAS.Core.Services;
+using FAS.Persistence;
 using FAS.Scanner.DigitalPersona;
 using Ninject;
 using Ninject.Modules;
@@ -19,7 +22,7 @@ namespace FAS.UI
             DependencyResolver.Wire(new NinjectModuleImpl());
 
 
-            Application.Run(new Form1());
+            Application.Run(new Main());
         }
 
         private class NinjectModuleImpl : NinjectModule
@@ -31,11 +34,14 @@ namespace FAS.UI
                 {
                     case "DigitalPersona":
                         {
-                            Bind(typeof(IEnroller)).To(typeof(Enroller));
+                            Bind(typeof(IEnroller)).To<Enroller>();
                             break;
                         }
                     default: throw new NotImplementedException($"Device {device} not implemented");
                 }
+
+                Bind(typeof(IStudentsDao)).ToConstant(new StudentsDao(""));
+                Bind(typeof(StudentsCommandService)).ToSelf();
             }
         }
     }

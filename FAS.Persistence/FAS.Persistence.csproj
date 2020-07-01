@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{81211234-0C88-40E3-AE85-3CD6C07B637A}</ProjectGuid>
+    <ProjectGuid>{A311C8DF-CFD8-4BD8-A7BC-A9437B886758}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FAS.Core</RootNamespace>
-    <AssemblyName>FAS.Core</AssemblyName>
+    <RootNamespace>FAS.Persistence</RootNamespace>
+    <AssemblyName>FAS.Persistence</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,7 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,32 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Seminars\AddAttendeeAtSession.cs" />
-    <Compile Include="Commands\Seminars\ChangeSeminar.cs" />
-    <Compile Include="Commands\Seminars\CreateSeminar.cs" />
-    <Compile Include="Commands\Seminars\CreateSession.cs" />
-    <Compile Include="Commands\Seminars\FinishSession.cs" />
-    <Compile Include="Commands\Seminars\RegisterAttendeeAtSeminar.cs" />
-    <Compile Include="Commands\Students\ChangeStudent.cs" />
-    <Compile Include="Commands\Students\DeleteStudent.cs" />
-    <Compile Include="Commands\Students\CreateStudent.cs" />
-    <Compile Include="Persistence\IStudentsDao.cs" />
-    <Compile Include="Ensure.cs" />
-    <Compile Include="Entities\Lecturer.cs" />
-    <Compile Include="Entities\RegisteredAttendee.cs" />
-    <Compile Include="Entities\Seminar.cs" />
-    <Compile Include="Entities\SeminarSession.cs" />
-    <Compile Include="Entities\SessionAttendee.cs" />
-    <Compile Include="Entities\SessionStatus.cs" />
-    <Compile Include="Entities\Student.cs" />
-    <Compile Include="Exceptions\DomainException.cs" />
-    <Compile Include="Exceptions\ObjectAlreadyExitsException.cs" />
-    <Compile Include="Exceptions\ObjectNotFoundException.cs" />
-    <Compile Include="IEnroller.cs" />
-    <Compile Include="IVerifier.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\StudentsCommandService.cs" />
+    <Compile Include="StudentsDao.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FAS.Core\FAS.Core.csproj">
+      <Project>{81211234-0C88-40E3-AE85-3CD6C07B637A}</Project>
+      <Name>FAS.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

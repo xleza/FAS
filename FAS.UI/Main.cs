@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace FAS.UI
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
@@ -17,8 +17,14 @@ namespace FAS.UI
 
             if (dialog.DialogResult == DialogResult.OK)
             {
-                var data = dialog.FingerPrintEnrollmentData;
+                var data = dialog.FingerPrintCheckSum;
             }
+        }
+
+        private void OnAddStudent(object sender, EventArgs e)
+        {
+            var addStudentDialog = DependencyResolver.Resolve<StudentAddFrom>();
+            addStudentDialog.ShowDialog();
         }
     }
 }

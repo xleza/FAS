@@ -8,7 +8,7 @@ namespace FAS.Core
         event EventHandler Connect;
         event EventHandler Disconnect;
         event EventHandler<Bitmap> Capture;
-        event EventHandler<byte[]> Success;
+        event EventHandler<(byte[] checkSum, Bitmap picture)> Success;
         event EventHandler Fail;
     }
 }

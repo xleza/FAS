@@ -8,7 +8,9 @@ namespace FAS.UI
     public partial class EnrollmentForm : Form
     {
         private readonly IEnroller _enroller;
-        public byte[] FingerPrintEnrollmentData { get; private set; }
+        public byte[] FingerPrintCheckSum { get; private set; }
+        public Bitmap FingerPrintPicture { get; private set; }
+
 
         public EnrollmentForm(IEnroller enroller)
         {
@@ -43,13 +45,14 @@ namespace FAS.UI
             Log("Fingerprint captured");
         }
 
-        private void OnSuccess(object sender, byte[] e)
+        private void OnSuccess(object sender, (byte[] checkSum, Bitmap picture) e)
         {
             Log("Fingerprint enrollment succeed");
-            
+
             Invoke(new Action(() =>
             {
-                FingerPrintEnrollmentData = e;
+                FingerPrintCheckSum = e.checkSum;
+                FingerPrintPicture = e.picture;
                 DialogResult = DialogResult.OK;
                 Close();
             }));
