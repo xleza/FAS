@@ -28,168 +28,181 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.MainTab = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.StudentsTab = new System.Windows.Forms.TabPage();
-            this.StudentsFilterBox = new System.Windows.Forms.GroupBox();
-            this.StudentCommands = new System.Windows.Forms.ToolStrip();
-            this.AddStudentBtn = new System.Windows.Forms.ToolStripButton();
-            this.StudentsGrid = new System.Windows.Forms.DataGridView();
-            this.PersonaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MainTab.SuspendLayout();
-            this.StudentsTab.SuspendLayout();
-            this.StudentCommands.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StudentsGrid)).BeginInit();
+            this.components = new System.ComponentModel.Container();
+            this.Menu = new System.Windows.Forms.Panel();
+            this.SeminarMenuBtn = new FontAwesome.Sharp.IconButton();
+            this.StudentsMenuBtn = new FontAwesome.Sharp.IconButton();
+            this.Logo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.HomeMenuBtn = new FontAwesome.Sharp.IconButton();
+            this.studentsListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Desktop = new System.Windows.Forms.Panel();
+            this.Menu.SuspendLayout();
+            this.Logo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsListItemDtoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // Menu
             // 
-            this.button1.Location = new System.Drawing.Point(342, 343);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 37);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
+            this.Menu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Menu.Controls.Add(this.SeminarMenuBtn);
+            this.Menu.Controls.Add(this.StudentsMenuBtn);
+            this.Menu.Controls.Add(this.Logo);
+            this.Menu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Menu.Location = new System.Drawing.Point(0, 0);
+            this.Menu.Name = "Menu";
+            this.Menu.Size = new System.Drawing.Size(312, 601);
+            this.Menu.TabIndex = 2;
             // 
-            // MainTab
+            // SeminarMenuBtn
             // 
-            this.MainTab.Controls.Add(this.StudentsTab);
-            this.MainTab.Controls.Add(this.tabPage2);
-            this.MainTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainTab.Location = new System.Drawing.Point(0, 0);
-            this.MainTab.Name = "MainTab";
-            this.MainTab.SelectedIndex = 0;
-            this.MainTab.Size = new System.Drawing.Size(1277, 736);
-            this.MainTab.TabIndex = 1;
+            this.SeminarMenuBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
+            this.SeminarMenuBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SeminarMenuBtn.FlatAppearance.BorderSize = 0;
+            this.SeminarMenuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SeminarMenuBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.SeminarMenuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SeminarMenuBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.SeminarMenuBtn.IconChar = FontAwesome.Sharp.IconChar.ChalkboardTeacher;
+            this.SeminarMenuBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.SeminarMenuBtn.IconSize = 32;
+            this.SeminarMenuBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SeminarMenuBtn.Location = new System.Drawing.Point(0, 278);
+            this.SeminarMenuBtn.Name = "SeminarMenuBtn";
+            this.SeminarMenuBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.SeminarMenuBtn.Rotation = 0D;
+            this.SeminarMenuBtn.Size = new System.Drawing.Size(310, 75);
+            this.SeminarMenuBtn.TabIndex = 2;
+            this.SeminarMenuBtn.Text = "Students";
+            this.SeminarMenuBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SeminarMenuBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SeminarMenuBtn.UseVisualStyleBackColor = false;
+            this.SeminarMenuBtn.Click += new System.EventHandler(this.OnSeminarMenuBtnClick);
             // 
-            // tabPage2
+            // StudentsMenuBtn
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1269, 707);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.StudentsMenuBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
+            this.StudentsMenuBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.StudentsMenuBtn.FlatAppearance.BorderSize = 0;
+            this.StudentsMenuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StudentsMenuBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.StudentsMenuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StudentsMenuBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.StudentsMenuBtn.IconChar = FontAwesome.Sharp.IconChar.UserGraduate;
+            this.StudentsMenuBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.StudentsMenuBtn.IconSize = 32;
+            this.StudentsMenuBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.StudentsMenuBtn.Location = new System.Drawing.Point(0, 203);
+            this.StudentsMenuBtn.Name = "StudentsMenuBtn";
+            this.StudentsMenuBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.StudentsMenuBtn.Rotation = 0D;
+            this.StudentsMenuBtn.Size = new System.Drawing.Size(310, 75);
+            this.StudentsMenuBtn.TabIndex = 1;
+            this.StudentsMenuBtn.Text = "Students";
+            this.StudentsMenuBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.StudentsMenuBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.StudentsMenuBtn.UseVisualStyleBackColor = false;
+            this.StudentsMenuBtn.Click += new System.EventHandler(this.OnStudentsMenuBtnClick);
             // 
-            // StudentsTab
+            // Logo
             // 
-            this.StudentsTab.Controls.Add(this.StudentsGrid);
-            this.StudentsTab.Controls.Add(this.StudentCommands);
-            this.StudentsTab.Controls.Add(this.StudentsFilterBox);
-            this.StudentsTab.Location = new System.Drawing.Point(4, 25);
-            this.StudentsTab.Name = "StudentsTab";
-            this.StudentsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.StudentsTab.Size = new System.Drawing.Size(1269, 707);
-            this.StudentsTab.TabIndex = 0;
-            this.StudentsTab.Text = "Students";
-            this.StudentsTab.UseVisualStyleBackColor = true;
+            this.Logo.Controls.Add(this.pictureBox1);
+            this.Logo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Logo.Location = new System.Drawing.Point(0, 0);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(310, 203);
+            this.Logo.TabIndex = 0;
             // 
-            // StudentsFilterBox
+            // pictureBox1
             // 
-            this.StudentsFilterBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.StudentsFilterBox.Location = new System.Drawing.Point(3, 3);
-            this.StudentsFilterBox.Name = "StudentsFilterBox";
-            this.StudentsFilterBox.Size = new System.Drawing.Size(273, 701);
-            this.StudentsFilterBox.TabIndex = 2;
-            this.StudentsFilterBox.TabStop = false;
-            this.StudentsFilterBox.Text = "Students Filter";
+            this.pictureBox1.Image = global::FAS.UI.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(21, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(264, 147);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
-            // StudentCommands
+            // panel1
             // 
-            this.StudentCommands.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.StudentCommands.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddStudentBtn});
-            this.StudentCommands.Location = new System.Drawing.Point(276, 3);
-            this.StudentCommands.Name = "StudentCommands";
-            this.StudentCommands.Size = new System.Drawing.Size(990, 27);
-            this.StudentCommands.TabIndex = 3;
-            this.StudentCommands.Text = "toolStrip1";
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
+            this.panel1.Controls.Add(this.HomeMenuBtn);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(312, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1096, 64);
+            this.panel1.TabIndex = 3;
             // 
-            // AddStudentBtn
+            // HomeMenuBtn
             // 
-            this.AddStudentBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddStudentBtn.Image = global::FAS.UI.Properties.Resources.plus;
-            this.AddStudentBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddStudentBtn.Name = "AddStudentBtn";
-            this.AddStudentBtn.Size = new System.Drawing.Size(29, 24);
-            this.AddStudentBtn.Text = "toolStripButton1";
-            this.AddStudentBtn.Click += new System.EventHandler(this.OnAddStudent);
+            this.HomeMenuBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
+            this.HomeMenuBtn.FlatAppearance.BorderSize = 0;
+            this.HomeMenuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeMenuBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.HomeMenuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomeMenuBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.HomeMenuBtn.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.HomeMenuBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.HomeMenuBtn.IconSize = 32;
+            this.HomeMenuBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.HomeMenuBtn.Location = new System.Drawing.Point(3, 10);
+            this.HomeMenuBtn.Name = "HomeMenuBtn";
+            this.HomeMenuBtn.Rotation = 0D;
+            this.HomeMenuBtn.Size = new System.Drawing.Size(115, 45);
+            this.HomeMenuBtn.TabIndex = 0;
+            this.HomeMenuBtn.Text = "Home";
+            this.HomeMenuBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.HomeMenuBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.HomeMenuBtn.UseVisualStyleBackColor = false;
+            this.HomeMenuBtn.Click += new System.EventHandler(this.OnHomeMenuBtnClick);
             // 
-            // StudentsGrid
+            // studentsListItemDtoBindingSource
             // 
-            this.StudentsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StudentsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PersonaId,
-            this.FullName,
-            this.BirthDate});
-            this.StudentsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StudentsGrid.Location = new System.Drawing.Point(276, 30);
-            this.StudentsGrid.Name = "StudentsGrid";
-            this.StudentsGrid.ReadOnly = true;
-            this.StudentsGrid.RowHeadersWidth = 51;
-            this.StudentsGrid.RowTemplate.Height = 24;
-            this.StudentsGrid.Size = new System.Drawing.Size(990, 674);
-            this.StudentsGrid.TabIndex = 4;
+            this.studentsListItemDtoBindingSource.DataSource = typeof(FAS.UI.Models.StudentsListItemDto);
             // 
-            // PersonaId
+            // Desktop
             // 
-            this.PersonaId.HeaderText = "PersonalId";
-            this.PersonaId.MinimumWidth = 6;
-            this.PersonaId.Name = "PersonaId";
-            this.PersonaId.Width = 125;
-            // 
-            // FullName
-            // 
-            this.FullName.HeaderText = "Full Name";
-            this.FullName.MinimumWidth = 6;
-            this.FullName.Name = "FullName";
-            this.FullName.Width = 125;
-            // 
-            // BirthDate
-            // 
-            this.BirthDate.HeaderText = "Birth Date";
-            this.BirthDate.MinimumWidth = 6;
-            this.BirthDate.Name = "BirthDate";
-            this.BirthDate.Width = 125;
+            this.Desktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Desktop.Location = new System.Drawing.Point(312, 64);
+            this.Desktop.Name = "Desktop";
+            this.Desktop.Size = new System.Drawing.Size(1096, 537);
+            this.Desktop.TabIndex = 4;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1277, 736);
-            this.Controls.Add(this.MainTab);
-            this.Controls.Add(this.button1);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(1408, 601);
+            this.Controls.Add(this.Desktop);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Menu);
             this.Name = "Main";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.MainTab.ResumeLayout(false);
-            this.StudentsTab.ResumeLayout(false);
-            this.StudentsTab.PerformLayout();
-            this.StudentCommands.ResumeLayout(false);
-            this.StudentCommands.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StudentsGrid)).EndInit();
+            this.Menu.ResumeLayout(false);
+            this.Logo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.studentsListItemDtoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TabControl MainTab;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage StudentsTab;
-        private System.Windows.Forms.DataGridView StudentsGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PersonaId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDate;
-        private System.Windows.Forms.ToolStrip StudentCommands;
-        private System.Windows.Forms.ToolStripButton AddStudentBtn;
-        private System.Windows.Forms.GroupBox StudentsFilterBox;
+        private System.Windows.Forms.BindingSource studentsListItemDtoBindingSource;
+        private System.Windows.Forms.Panel Menu;
+        private FontAwesome.Sharp.IconButton StudentsMenuBtn;
+        private System.Windows.Forms.Panel Logo;
+        private FontAwesome.Sharp.IconButton SeminarMenuBtn;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private FontAwesome.Sharp.IconButton HomeMenuBtn;
+        private System.Windows.Forms.Panel Desktop;
     }
 }
 

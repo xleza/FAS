@@ -3,13 +3,17 @@ using FAS.Core.Commands.Students;
 
 namespace FAS.Core.Entities
 {
-    public sealed class Student
+    public class Student
     {
         public string Id { get; private set; }
         public string FullName { get; private set; }
         public DateTime BirthDate { get; private set; }
         public byte[] FingerprintChecksum { get; private set; }
         public byte[] Image { get; private set; }
+
+        protected Student()
+        {
+        }
 
         public Student(CreateStudent cmd)
         {

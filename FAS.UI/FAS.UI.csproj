@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=5.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.13.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
     </Reference>
@@ -63,13 +66,27 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="MessageBoxWrapper.cs" />
+    <Compile Include="Models\StudentsListItemDto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StudentAddFrom.cs">
+    <Compile Include="Seminars\SeminarsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StudentAddFrom.Designer.cs">
+    <Compile Include="Seminars\SeminarsForm.Designer.cs">
+      <DependentUpon>SeminarsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\StudentAddFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Students\StudentAddFrom.Designer.cs">
       <DependentUpon>StudentAddFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\StudentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Students\StudentsForm.Designer.cs">
+      <DependentUpon>StudentsForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="EnrollmentForm.resx">
       <DependentUpon>EnrollmentForm.cs</DependentUpon>
@@ -87,10 +104,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="StudentAddFrom.resx">
+    <EmbeddedResource Include="Students\StudentAddFrom.resx">
       <DependentUpon>StudentAddFrom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Students\StudentsForm.resx">
+      <DependentUpon>StudentsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\FAS.UI.Models.StudentsListItemDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -121,5 +142,9 @@
   <ItemGroup>
     <None Include="Resources\plus.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

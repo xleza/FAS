@@ -19,8 +19,7 @@ namespace FAS.Core.Services
         {
             cmd.Validate();
 
-            var student = await _studentsDao.GetAsync(cmd.Id);
-            if (student != null)
+            if (await _studentsDao.ExistsAsync(cmd.Id))
                 throw new ObjectAlreadyExitsException(cmd.Id, typeof(Student));
 
             await _studentsDao.AddAsync(new Student(cmd));

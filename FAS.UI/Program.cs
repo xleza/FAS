@@ -29,6 +29,7 @@ namespace FAS.UI
         {
             public override void Load()
             {
+                var connectionString = ConfigurationManager.ConnectionStrings["FAS"].ToString();
                 var device = ConfigurationManager.AppSettings["FingerprintDevice"];
                 switch (device)
                 {
@@ -40,7 +41,9 @@ namespace FAS.UI
                     default: throw new NotImplementedException($"Device {device} not implemented");
                 }
 
-                Bind(typeof(IStudentsDao)).ToConstant(new StudentsDao(""));
+                var studentsDao = new StudentsDao(connectionString);
+                Bind(typeof(IStudentsDao)).ToConstant(studentsDao);
+                Bind(typeof(StudentsDao)).ToConstant(studentsDao);
                 Bind(typeof(StudentsCommandService)).ToSelf();
             }
         }

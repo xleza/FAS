@@ -8,6 +8,13 @@ namespace FAS.UI
     {
         public static byte[] ToBytes(this Image self) => (byte[])new ImageConverter().ConvertTo(self, typeof(byte[]));
 
+        public static async Task OnSuccess(this Task self, Action onSuccess)
+        {
+            await self;
+
+            onSuccess();
+        }
+
         public static async Task OnError(this Task self, Action<string> onError)
         {
             try

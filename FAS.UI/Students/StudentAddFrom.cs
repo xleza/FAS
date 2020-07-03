@@ -49,7 +49,7 @@ namespace FAS.UI
                 return;
 
             SaveBtn.Enabled = false;
-            
+
             await _studentsService.CreateAsync(new CreateStudent
             {
                 Id = PersonalIdTxt.Text,
@@ -58,7 +58,8 @@ namespace FAS.UI
                 Image = ImageBox.Image.ToBytes(),
                 BirthDate = DateTime.Now
             })
-                .OnError(ex => MessageBox.Show(ex));
+                .OnSuccess(() => MessageBoxWrapper.Info("Student created successfully"))
+                .OnError(MessageBoxWrapper.Error);
 
             SaveBtn.Enabled = true;
         }
