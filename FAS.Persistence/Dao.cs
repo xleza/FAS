@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using FAS.Core.Exceptions;
 
 namespace FAS.Persistence
 {
@@ -60,7 +61,7 @@ namespace FAS.Persistence
             var properties = typeof(T).GetProperties();
             foreach (var property in typeof(T).GetProperties())
             {
-                if (!_typeMapping.TryGetValue(property.PropertyType.Name, out var type))
+                if (!_typeMapping.ContainsKey(property.PropertyType.Name))
                     throw new NotSupportedException($"Can't store type {property.PropertyType.Name}");
 
                 propertyNames.Add($"[{property.Name}]");
@@ -87,32 +88,43 @@ namespace FAS.Persistence
             return result;
         }
 
-        //const string sql = @"INSERT INTO [Students]
-        //                           ([Id]
-        //                           ,[Name]
-        //                           ,[BirthDate]
-        //                           ,[FingerprintChecksum]
-        //                           ,[Image])
-        //                     VALUES
-        //                           (@Id,
-        //                            @Name,
-        //                            @BirthDate,
-        //                            @FingerprintChecksum,
-        //                            @Image)";
 
-        //    using (var conn = new SqlConnection(_connectionString))
-        //{
-        //    using (var cmd = new SqlCommand(sql, conn))
-        //    {
-        //        cmd.Parameters.AddWithValue("@Id", student.Id);
-        //        cmd.Parameters.AddWithValue("@Name", student.FullName);
-        //        cmd.Parameters.AddWithValue("@BirthDate", student.BirthDate);
-        //        cmd.Parameters.AddWithValue("@FingerprintCheckSum", student.FingerprintChecksum);
-        //        cmd.Parameters.AddWithValue("@Image", student.Image);
+        public async Task<T> GetAsync<T>(TId id)
+        {
+            var propertyNames = new List<string>();
+            var properties = typeof(T).GetProperties();
+            foreach (var property in typeof(T).GetProperties())
+            {
+                if (!_typeMapping.ContainsKey(property.PropertyType.Name))
+                    throw new NotSupportedException($"Can't store type {property.PropertyType.Name}");
 
-        //        await cmd.ExecuteScalarAsync();
-        //    }
-        //}
+                propertyNames.Add($"[{property.Name}]");
+            }
+
+            var sql = $@"SELECT {string.Join(",", propertyNames)} FROM {_tableName} WHERE {_id.name} = @Id";
+
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.Add(new SqlParameter
+                    {
+                        ParameterName = "@Id",
+                        DbType = _id.type,
+                        Value = id
+                    });
+
+                    await conn.OpenAsync();
+                    var reader = await cmd.ExecuteReaderAsync();
+                    if (!reader.HasRows)
+                        throw new ObjectNotFoundException(id.ToString(), typeof(T));
+
+                    await reader.ReadAsync();
+
+                    return CreateInstance<T>(reader, properties);
+                }
+            }
+        }
 
         public virtual async Task AddAsync(TEntity entity)
         {
@@ -189,7 +201,7 @@ namespace FAS.Persistence
                         property.SetValue(instance, record.GetDateTime(ordinal));
                         break;
                     case DbType.Binary:
-                        property.SetValue(instance, record.GetDateTime(ordinal));
+                        property.SetValue(instance, (byte[])record.GetValue(ordinal));
                         break;
                     default:
                         throw new Exception($"Processing type {property.PropertyType} is unsupported");

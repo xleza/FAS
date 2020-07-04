@@ -35,7 +35,7 @@ namespace FAS.UI
                 {
                     case "DigitalPersona":
                         {
-                            Bind(typeof(IEnroller)).To<Enroller>();
+                            Bind(typeof(IFingerprintEnroller)).To<Enroller>();
                             break;
                         }
                     default: throw new NotImplementedException($"Device {device} not implemented");

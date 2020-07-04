@@ -33,7 +33,7 @@ namespace FAS.Core.Entities
             Status = SessionStatus.Finished;
         }
 
-        public void AddAttendeeSession(AddAttendeeAtSession cmd, IEnumerable<Student> registeredStudents, IVerifier verifier)
+        public void AddAttendeeSession(AddAttendeeAtSession cmd, IEnumerable<Student> registeredStudents, IFingerprintVerifier verifier)
         {
             if (Status == SessionStatus.Finished)
                 throw new DomainException("Can't add attendee at finished session");

@@ -8,7 +8,7 @@ using EventHandler = System.EventHandler;
 
 namespace FAS.Scanner.DigitalPersona
 {
-    public sealed class Enroller : IEnroller
+    public sealed class Enroller : IFingerprintEnroller
     {
         public event EventHandler Connect;
         public event EventHandler Disconnect;

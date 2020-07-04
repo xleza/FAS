@@ -7,12 +7,12 @@ namespace FAS.UI
 {
     public partial class EnrollmentForm : Form
     {
-        private readonly IEnroller _enroller;
+        private readonly IFingerprintEnroller _enroller;
         public byte[] FingerPrintCheckSum { get; private set; }
         public Bitmap FingerPrintPicture { get; private set; }
 
 
-        public EnrollmentForm(IEnroller enroller)
+        public EnrollmentForm(IFingerprintEnroller enroller)
         {
             InitializeComponent();
             _enroller = enroller;

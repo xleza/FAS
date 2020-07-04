@@ -63,8 +63,8 @@
     <Compile Include="Exceptions\DomainException.cs" />
     <Compile Include="Exceptions\ObjectAlreadyExitsException.cs" />
     <Compile Include="Exceptions\ObjectNotFoundException.cs" />
-    <Compile Include="IEnroller.cs" />
-    <Compile Include="IVerifier.cs" />
+    <Compile Include="IFingerprintEnroller.cs" />
+    <Compile Include="IFingerprintVerifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\StudentsCommandService.cs" />
   </ItemGroup>

@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Colors.cs" />
     <Compile Include="EnrollmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,7 +68,8 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxWrapper.cs" />
-    <Compile Include="Models\StudentsListItemDto.cs" />
+    <Compile Include="Students\Models\StudentsDetailsDto.cs" />
+    <Compile Include="Students\Models\StudentsListItemDto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seminars\SeminarsForm.cs">
@@ -76,11 +78,23 @@
     <Compile Include="Seminars\SeminarsForm.Designer.cs">
       <DependentUpon>SeminarsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Students\StudentAddFrom.cs">
+    <Compile Include="Students\StudentAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Students\StudentAddFrom.Designer.cs">
-      <DependentUpon>StudentAddFrom.cs</DependentUpon>
+    <Compile Include="Students\StudentAddForm.Designer.cs">
+      <DependentUpon>StudentAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\StudentDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Students\StudentDetailsForm.Designer.cs">
+      <DependentUpon>StudentDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\StudentEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Students\StudentEditForm.Designer.cs">
+      <DependentUpon>StudentEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Students\StudentsForm.cs">
       <SubType>Form</SubType>
@@ -104,14 +118,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Students\StudentAddFrom.resx">
-      <DependentUpon>StudentAddFrom.cs</DependentUpon>
+    <EmbeddedResource Include="Students\StudentAddForm.resx">
+      <DependentUpon>StudentAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students\StudentDetailsForm.resx">
+      <DependentUpon>StudentDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Students\StudentsForm.resx">
       <DependentUpon>StudentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FAS.UI.Models.StudentsListItemDto.datasource" />
+    <None Include="Properties\DataSources\FAS.UI.Students.StudentsListItemDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

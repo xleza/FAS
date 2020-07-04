@@ -24,7 +24,6 @@ namespace FAS.UI
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 ImageBox.ImageLocation = openFileDialog.FileName;
-                //ImageBox.Image = new Bitmap(openFileDialog.i);
             }
 
             DialogResult = DialogResult.None;
@@ -47,7 +46,6 @@ namespace FAS.UI
             var valid = ValidateChildren(ValidationConstraints.Enabled);
             if (!valid)
                 return;
-
             SaveBtn.Enabled = false;
 
             await _studentsService.CreateAsync(new CreateStudent
@@ -55,6 +53,7 @@ namespace FAS.UI
                 Id = PersonalIdTxt.Text,
                 FullName = FullNameTxt.Text,
                 FingerprintChecksum = _fingerPrintCheckSum,
+                FingerprintImage = FingerprintPicture.Image.ToBytes(),
                 Image = ImageBox.Image.ToBytes(),
                 BirthDate = DateTime.Now
             })
@@ -62,6 +61,8 @@ namespace FAS.UI
                 .OnError(MessageBoxWrapper.Error);
 
             SaveBtn.Enabled = true;
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void OnValidatePersonalId(object sender, CancelEventArgs e)

@@ -29,158 +29,172 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentsForm));
-            this.StudentsFilterBox = new System.Windows.Forms.GroupBox();
-            this.StudentCommands = new System.Windows.Forms.ToolStrip();
-            this.AddStudentBtn = new System.Windows.Forms.ToolStripButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.StudentDetailsBtn = new FontAwesome.Sharp.IconButton();
+            this.RefreshStudentBtn = new FontAwesome.Sharp.IconButton();
+            this.StudentAddBtn = new FontAwesome.Sharp.IconButton();
             this.StudentsGrid = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentsListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.StudentCommands.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsListItemDtoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // StudentsFilterBox
+            // panel1
             // 
-            this.StudentsFilterBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.StudentsFilterBox.Location = new System.Drawing.Point(0, 0);
-            this.StudentsFilterBox.Name = "StudentsFilterBox";
-            this.StudentsFilterBox.Size = new System.Drawing.Size(273, 754);
-            this.StudentsFilterBox.TabIndex = 3;
-            this.StudentsFilterBox.TabStop = false;
-            this.StudentsFilterBox.Text = "Students Filter";
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(252, 754);
+            this.panel1.TabIndex = 8;
             // 
-            // StudentCommands
+            // panel2
             // 
-            this.StudentCommands.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.StudentCommands.Dock = System.Windows.Forms.DockStyle.None;
-            this.StudentCommands.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.StudentCommands.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddStudentBtn,
-            this.toolStripButton1});
-            this.StudentCommands.Location = new System.Drawing.Point(373, 53);
-            this.StudentCommands.Name = "StudentCommands";
-            this.StudentCommands.Size = new System.Drawing.Size(71, 27);
-            this.StudentCommands.TabIndex = 4;
-            this.StudentCommands.Text = "toolStrip1";
+            this.panel2.Controls.Add(this.StudentDetailsBtn);
+            this.panel2.Controls.Add(this.RefreshStudentBtn);
+            this.panel2.Controls.Add(this.StudentAddBtn);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(252, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1121, 65);
+            this.panel2.TabIndex = 9;
             // 
-            // AddStudentBtn
+            // StudentDetailsBtn
             // 
-            this.AddStudentBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddStudentBtn.Image = global::FAS.UI.Properties.Resources.plus;
-            this.AddStudentBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddStudentBtn.Name = "AddStudentBtn";
-            this.AddStudentBtn.Size = new System.Drawing.Size(29, 36);
-            this.AddStudentBtn.Text = "toolStripButton1";
-            this.AddStudentBtn.Click += new System.EventHandler(this.OnAddStudent);
+            this.StudentDetailsBtn.Enabled = false;
+            this.StudentDetailsBtn.FlatAppearance.BorderSize = 0;
+            this.StudentDetailsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StudentDetailsBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.StudentDetailsBtn.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            this.StudentDetailsBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.StudentDetailsBtn.IconSize = 48;
+            this.StudentDetailsBtn.Location = new System.Drawing.Point(58, 7);
+            this.StudentDetailsBtn.Name = "StudentDetailsBtn";
+            this.StudentDetailsBtn.Rotation = 0D;
+            this.StudentDetailsBtn.Size = new System.Drawing.Size(53, 57);
+            this.StudentDetailsBtn.TabIndex = 15;
+            this.StudentDetailsBtn.UseVisualStyleBackColor = true;
+            this.StudentDetailsBtn.Click += new System.EventHandler(this.OnDetailsStudent);
+            // 
+            // RefreshStudentBtn
+            // 
+            this.RefreshStudentBtn.FlatAppearance.BorderSize = 0;
+            this.RefreshStudentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshStudentBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.RefreshStudentBtn.IconChar = FontAwesome.Sharp.IconChar.Sync;
+            this.RefreshStudentBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.RefreshStudentBtn.IconSize = 48;
+            this.RefreshStudentBtn.Location = new System.Drawing.Point(6, 8);
+            this.RefreshStudentBtn.Name = "RefreshStudentBtn";
+            this.RefreshStudentBtn.Rotation = 0D;
+            this.RefreshStudentBtn.Size = new System.Drawing.Size(53, 57);
+            this.RefreshStudentBtn.TabIndex = 13;
+            this.RefreshStudentBtn.UseVisualStyleBackColor = true;
+            this.RefreshStudentBtn.Click += new System.EventHandler(this.OnRefresh);
+            // 
+            // StudentAddBtn
+            // 
+            this.StudentAddBtn.FlatAppearance.BorderSize = 0;
+            this.StudentAddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StudentAddBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.StudentAddBtn.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.StudentAddBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.StudentAddBtn.IconSize = 48;
+            this.StudentAddBtn.Location = new System.Drawing.Point(114, 8);
+            this.StudentAddBtn.Name = "StudentAddBtn";
+            this.StudentAddBtn.Rotation = 0D;
+            this.StudentAddBtn.Size = new System.Drawing.Size(53, 57);
+            this.StudentAddBtn.TabIndex = 12;
+            this.StudentAddBtn.UseVisualStyleBackColor = true;
+            this.StudentAddBtn.Click += new System.EventHandler(this.OnAddStudent);
             // 
             // StudentsGrid
             // 
+            this.StudentsGrid.AllowUserToAddRows = false;
+            this.StudentsGrid.AllowUserToDeleteRows = false;
             this.StudentsGrid.AutoGenerateColumns = false;
             this.StudentsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.StudentsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.fullNameDataGridViewTextBoxColumn,
-            this.birthDateDataGridViewTextBoxColumn});
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
             this.StudentsGrid.DataSource = this.studentsListItemDtoBindingSource;
-            this.StudentsGrid.Location = new System.Drawing.Point(273, 142);
+            this.StudentsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StudentsGrid.Location = new System.Drawing.Point(252, 65);
             this.StudentsGrid.Name = "StudentsGrid";
             this.StudentsGrid.ReadOnly = true;
             this.StudentsGrid.RowHeadersWidth = 51;
             this.StudentsGrid.RowTemplate.Height = 24;
-            this.StudentsGrid.Size = new System.Drawing.Size(1121, 612);
-            this.StudentsGrid.TabIndex = 6;
+            this.StudentsGrid.Size = new System.Drawing.Size(1121, 689);
+            this.StudentsGrid.TabIndex = 10;
+            this.StudentsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnStudentsGridCellClick);
+            this.StudentsGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnStudentsGridCellDoubleClick);
             // 
-            // idDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 125;
             // 
-            // fullNameDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn.HeaderText = "FullName";
-            this.fullNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
-            this.fullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fullNameDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "FullName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "FullName";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 125;
             // 
-            // birthDateDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn3
             // 
-            this.birthDateDataGridViewTextBoxColumn.DataPropertyName = "BirthDate";
-            this.birthDateDataGridViewTextBoxColumn.HeaderText = "BirthDate";
-            this.birthDateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.birthDateDataGridViewTextBoxColumn.Name = "birthDateDataGridViewTextBoxColumn";
-            this.birthDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.birthDateDataGridViewTextBoxColumn.Width = 125;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "BirthDate";
+            this.dataGridViewTextBoxColumn3.HeaderText = "BirthDate";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 125;
             // 
             // studentsListItemDtoBindingSource
             // 
-            this.studentsListItemDtoBindingSource.DataSource = typeof(FAS.UI.Models.StudentsListItemDto);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
-            this.toolStripButton1.Text = "toolStripButton1";
-            // 
-            // iconButton1
-            // 
-            this.iconButton1.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.UserGraduate;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconSize = 50;
-            this.iconButton1.Location = new System.Drawing.Point(904, 32);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Rotation = 0D;
-            this.iconButton1.Size = new System.Drawing.Size(119, 48);
-            this.iconButton1.TabIndex = 7;
-            this.iconButton1.Text = "iconButton1";
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.studentsListItemDtoBindingSource.DataSource = typeof(FAS.UI.Students.StudentsListItemDto);
             // 
             // StudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1394, 754);
-            this.Controls.Add(this.iconButton1);
+            this.ClientSize = new System.Drawing.Size(1373, 754);
             this.Controls.Add(this.StudentsGrid);
-            this.Controls.Add(this.StudentCommands);
-            this.Controls.Add(this.StudentsFilterBox);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "StudentsForm";
             this.Text = "StudentsForm";
-            this.StudentCommands.ResumeLayout(false);
-            this.StudentCommands.PerformLayout();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.StudentsGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsListItemDtoBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox StudentsFilterBox;
-        private System.Windows.Forms.ToolStrip StudentCommands;
-        private System.Windows.Forms.ToolStripButton AddStudentBtn;
-        private System.Windows.Forms.DataGridView StudentsGrid;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private FontAwesome.Sharp.IconButton StudentAddBtn;
+        private FontAwesome.Sharp.IconButton RefreshStudentBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn birthDateDataGridViewTextBoxColumn;
+        private FontAwesome.Sharp.IconButton StudentDetailsBtn;
+        private System.Windows.Forms.DataGridView StudentsGrid;
         private System.Windows.Forms.BindingSource studentsListItemDtoBindingSource;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }

@@ -44,8 +44,8 @@ namespace FAS.UI
             DisableButton();
 
             _activeButton = button;
-            _activeButton.ForeColor = Color.FromArgb(0, 144, 134);
-            _leftBorder.BackColor = Color.FromArgb(0, 144, 134);
+            _activeButton.ForeColor = Colors.Primary;
+            _leftBorder.BackColor = Colors.Primary;
             _leftBorder.Location = new Point(0, _activeButton.Location.Y);
             _leftBorder.Visible = true;
             _leftBorder.BringToFront();
@@ -56,7 +56,7 @@ namespace FAS.UI
             if (_activeButton == null)
                 return;
 
-            _activeButton.ForeColor = Color.FromArgb(92, 92, 92);
+            _activeButton.ForeColor = Colors.Secondary;
         }
 
         private void OpenChildForm(Form childForm)

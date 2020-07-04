@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FAS.UI.Models
+namespace FAS.UI.Students
 {
     public sealed class StudentsListItemDto
     {

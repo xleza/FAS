@@ -4,5 +4,6 @@
 	[FullName] NVARCHAR(250) NOT NULL,
 	[BirthDate] DateTime NOT NULL,
 	[FingerprintChecksum] VARBINARY(MAX) NOT NULL,
+	[FingerprintImage] VARBINARY(MAX) NOT NULL,
 	[Image] VARBINARY(MAX) NOT NULL
 )

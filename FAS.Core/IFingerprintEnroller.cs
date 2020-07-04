@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace FAS.Core
 {
-    public interface IEnroller : IDisposable
+    public interface IFingerprintEnroller : IDisposable
     {
         event EventHandler Connect;
         event EventHandler Disconnect;

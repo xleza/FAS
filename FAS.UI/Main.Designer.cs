@@ -36,8 +36,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.HomeMenuBtn = new FontAwesome.Sharp.IconButton();
-            this.studentsListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Desktop = new System.Windows.Forms.Panel();
+            this.studentsListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Menu.SuspendLayout();
             this.Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -130,6 +130,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.HomeMenuBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(312, 0);
@@ -160,10 +161,6 @@
             this.HomeMenuBtn.UseVisualStyleBackColor = false;
             this.HomeMenuBtn.Click += new System.EventHandler(this.OnHomeMenuBtnClick);
             // 
-            // studentsListItemDtoBindingSource
-            // 
-            this.studentsListItemDtoBindingSource.DataSource = typeof(FAS.UI.Models.StudentsListItemDto);
-            // 
             // Desktop
             // 
             this.Desktop.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -171,6 +168,10 @@
             this.Desktop.Name = "Desktop";
             this.Desktop.Size = new System.Drawing.Size(1096, 537);
             this.Desktop.TabIndex = 4;
+            // 
+            // studentsListItemDtoBindingSource
+            // 
+            this.studentsListItemDtoBindingSource.DataSource = typeof(FAS.UI.Students.StudentsListItemDto);
             // 
             // Main
             // 
