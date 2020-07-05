@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using FAS.UI.Seminars;
+using FAS.UI.Lecturers;
 using FAS.UI.Students;
 using FontAwesome.Sharp;
 
@@ -27,11 +27,16 @@ namespace FAS.UI
             ActiveButton((IconButton)sender);
             OpenChildForm(DependencyResolver.Resolve<StudentsForm>());
         }
+        private void OnLecturerMenuBtnClick(object sender, EventArgs e)
+        {
+            ActiveButton((IconButton)sender);
+            OpenChildForm(DependencyResolver.Resolve<LecturersForm>());
+        }
 
         private void OnSeminarMenuBtnClick(object sender, EventArgs e)
         {
             ActiveButton((IconButton)sender);
-            OpenChildForm(DependencyResolver.Resolve<SeminarsForm>());
+            //OpenChildForm(DependencyResolver.Resolve<SeminarsForm>());
         }
 
         private void OnHomeMenuBtnClick(object sender, EventArgs e)

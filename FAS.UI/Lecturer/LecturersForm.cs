@@ -3,22 +3,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FAS.Persistence;
+using FAS.UI.Lecturer.Models;
 
-namespace FAS.UI.Students
+namespace FAS.UI.Lecturer
 {
-    public partial class StudentsForm : Form
+    public partial class LecturersForm : Form
     {
-        private readonly StudentsDao _studentsDao;
+        private readonly LecturersDao _lecturersDao;
         private string _selectedStudentId;
 
-        public StudentsForm(StudentsDao studentsDao)
+        public LecturersForm(LecturersDao lecturersDao)
         {
-            _studentsDao = studentsDao;
+            _lecturersDao = lecturersDao;
             InitializeComponent();
             RefreshTableAsync();
         }
 
-        private async void OnAddStudent(object sender, EventArgs e)
+        private async void OnAddLecturer(object sender, EventArgs e)
         {
             var addStudentDialog = DependencyResolver.Resolve<StudentAddFrom>();
             if (addStudentDialog.ShowDialog() == DialogResult.OK)
@@ -27,9 +28,9 @@ namespace FAS.UI.Students
             }
         }
 
-        private void OnDetailsStudent(object sender, EventArgs e)
+        private void OnLecturerDetails(object sender, EventArgs e)
         {
-            OpenStudentDetails();
+            OpenLecturerDetails();
         }
 
         private async void OnRefresh(object sender, EventArgs e)
@@ -39,7 +40,7 @@ namespace FAS.UI.Students
 
         private async Task RefreshTableAsync()
         {
-            var students = await _studentsDao.ListAsync<StudentsListItemDto>();
+            var students = await _lecturersDao.ListAsync<LecturersListItemDto>();
             studentsListItemDtoBindingSource.DataSource = students;
 
             _selectedStudentId = students.FirstOrDefault()?.Id;
@@ -47,23 +48,21 @@ namespace FAS.UI.Students
                 StudentDetailsBtn.Enabled = true;
         }
 
-        private void OnStudentsGridCellClick(object sender, DataGridViewCellEventArgs e)
+        private void OnLecturersGridCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex <= 0)
-                return;
             _selectedStudentId = StudentsGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
-        private void OnStudentsGridCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void OnLecturersGridCellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            OpenStudentDetails();
+            OpenLecturerDetails();
         }
 
-        private void OpenStudentDetails()
+        private void OpenLecturerDetails()
         {
             if (_selectedStudentId == null)
                 return;
 
-            new StudentDetailsForm(_selectedStudentId, DependencyResolver.Resolve<StudentsDao>()).ShowDialog();
+            new LecturerDetailsForm(_selectedStudentId, DependencyResolver.Resolve<StudentsDao>()).ShowDialog();
         }
     }
 }

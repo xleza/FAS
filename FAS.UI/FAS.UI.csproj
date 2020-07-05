@@ -68,16 +68,30 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxWrapper.cs" />
+    <Compile Include="Lecturers\Models\LecturerDetailsDto.cs" />
+    <Compile Include="Lecturers\Models\LecturersListItemDto.cs" />
+    <Compile Include="Lecturers\LecturerAddFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lecturers\LecturerAddFrom.Designer.cs">
+      <DependentUpon>LecturerAddFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lecturers\LecturerDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lecturers\LecturerDetailsForm.Designer.cs">
+      <DependentUpon>LecturerDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lecturers\LecturersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lecturers\LecturersForm.Designer.cs">
+      <DependentUpon>LecturersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Students\Models\StudentsDetailsDto.cs" />
     <Compile Include="Students\Models\StudentsListItemDto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seminars\SeminarsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Seminars\SeminarsForm.Designer.cs">
-      <DependentUpon>SeminarsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Students\StudentAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,12 +103,6 @@
     </Compile>
     <Compile Include="Students\StudentDetailsForm.Designer.cs">
       <DependentUpon>StudentDetailsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Students\StudentEditForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Students\StudentEditForm.Designer.cs">
-      <DependentUpon>StudentEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Students\StudentsForm.cs">
       <SubType>Form</SubType>
@@ -118,6 +126,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Lecturers\LecturerAddFrom.resx">
+      <DependentUpon>LecturerAddFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lecturers\LecturerDetailsForm.resx">
+      <DependentUpon>LecturerDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lecturers\LecturersForm.resx">
+      <DependentUpon>LecturersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Students\StudentAddForm.resx">
       <DependentUpon>StudentAddForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +145,7 @@
       <DependentUpon>StudentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\FAS.UI.Lecturers.Models.LecturersListItemDto.datasource" />
     <None Include="Properties\DataSources\FAS.UI.Models.StudentsListItemDto.datasource" />
     <None Include="Properties\DataSources\FAS.UI.Students.StudentsListItemDto.datasource" />
     <None Include="Properties\Settings.settings">

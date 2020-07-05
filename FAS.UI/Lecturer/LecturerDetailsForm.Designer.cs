@@ -1,6 +1,6 @@
-﻿namespace FAS.UI.Students
+﻿namespace FAS.UI.Lecturer
 {
-    partial class StudentDetailsForm
+    partial class LecturerDetailsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -90,7 +90,7 @@
             this.PersonalIdValue.AutoSize = true;
             this.PersonalIdValue.Location = new System.Drawing.Point(109, 30);
             this.PersonalIdValue.Name = "PersonalIdValue";
-            this.PersonalIdValue.Size = new System.Drawing.Size(0, 17);
+            this.PersonalIdValue.Size = new System.Drawing.Size(0, 21);
             this.PersonalIdValue.TabIndex = 5;
             // 
             // FullNameValue
@@ -98,7 +98,7 @@
             this.FullNameValue.AutoSize = true;
             this.FullNameValue.Location = new System.Drawing.Point(109, 70);
             this.FullNameValue.Name = "FullNameValue";
-            this.FullNameValue.Size = new System.Drawing.Size(0, 17);
+            this.FullNameValue.Size = new System.Drawing.Size(0, 21);
             this.FullNameValue.TabIndex = 6;
             // 
             // BirthDateValue
@@ -106,7 +106,7 @@
             this.BirthDateValue.AutoSize = true;
             this.BirthDateValue.Location = new System.Drawing.Point(109, 112);
             this.BirthDateValue.Name = "BirthDateValue";
-            this.BirthDateValue.Size = new System.Drawing.Size(0, 17);
+            this.BirthDateValue.Size = new System.Drawing.Size(0, 21);
             this.BirthDateValue.TabIndex = 7;
             // 
             // StudentDetailsForm
@@ -122,9 +122,6 @@
             this.Controls.Add(this.BirthDateLbl);
             this.Controls.Add(this.FullNameLbl);
             this.Controls.Add(this.PersonalIdLbl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "StudentDetailsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "StudentDetailsForm";

@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Students.sql" />
+    <Build Include="Lecturers.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FAS.DB.refactorlog" />

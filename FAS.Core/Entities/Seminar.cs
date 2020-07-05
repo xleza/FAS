@@ -8,10 +8,10 @@ namespace FAS.Core.Entities
 {
     public sealed class Seminar
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int LecturerId { get; set; }
-        public List<RegisteredAttendee> RegisteredAttendees { get; set; }
+        public int Id { get; private set; }
+        public string Name { get; private set; }
+        public int LecturerId { get; private set; }
+        public List<RegisteredAttendee> RegisteredAttendees { get; private set; }
 
         public Seminar(CreateSeminar cmd)
         {

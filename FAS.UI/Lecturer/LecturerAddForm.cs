@@ -4,15 +4,15 @@ using System.Windows.Forms;
 using FAS.Core.Commands.Students;
 using FAS.Core.Services;
 
-namespace FAS.UI.Students
+namespace FAS.UI.Lecturer
 {
-    public partial class StudentAddFrom : Form
+    public partial class LecturersAddFrom : Form
     {
         private readonly StudentsCommandService _studentsService;
 
         private byte[] _fingerPrintCheckSum;
 
-        public StudentAddFrom(StudentsCommandService studentsService)
+        public LecturersAddFrom(StudentsCommandService studentsService)
         {
             InitializeComponent();
             _studentsService = studentsService;
@@ -55,7 +55,7 @@ namespace FAS.UI.Students
                 FingerprintChecksum = _fingerPrintCheckSum,
                 FingerprintImage = FingerprintPicture.Image.ToBytes(),
                 Image = ImageBox.Image.ToBytes(),
-                BirthDate = BirthDatePicker.Value
+                BirthDate = DateTime.Now
             })
                 .OnSuccess(() => MessageBoxWrapper.Info("Student created successfully"))
                 .OnError(MessageBoxWrapper.Error);
@@ -77,13 +77,6 @@ namespace FAS.UI.Students
                 FullNameTxt,
                 !string.IsNullOrEmpty(FullNameTxt.Text),
                 $"{FullNameLbl.Name} Is Required",
-                e);
-
-        private void OnValidateBirthDate(object sender, CancelEventArgs e)
-            => ValidateControl(
-                BirthDatePicker,
-                BirthDatePicker.Value != default,
-                $"{BirthDateLbl.Name} Is Required",
                 e);
 
         private void OnValidateImage(object sender, CancelEventArgs e)

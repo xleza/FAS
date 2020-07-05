@@ -42,8 +42,14 @@ namespace FAS.UI
                 }
 
                 var studentsDao = new StudentsDao(connectionString);
+                var lecturersDao = new LecturersDao(connectionString);
+
                 Bind(typeof(IStudentsDao)).ToConstant(studentsDao);
                 Bind(typeof(StudentsDao)).ToConstant(studentsDao);
+
+                Bind(typeof(ILecturerDao)).ToConstant(lecturersDao);
+                Bind(typeof(LecturersDao)).ToConstant(lecturersDao);
+
                 Bind(typeof(StudentsCommandService)).ToSelf();
             }
         }

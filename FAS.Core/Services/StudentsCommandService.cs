@@ -24,15 +24,5 @@ namespace FAS.Core.Services
 
             await _studentsDao.AddAsync(new Student(cmd));
         }
-
-        public async Task ChangeAsync(ChangeStudent cmd)
-        {
-            var student = await _studentsDao.GetAsync(cmd.Id);
-            if (student == null)
-                throw new ObjectNotFoundException(cmd.Id, typeof(Student));
-
-            student.Change(cmd);
-            await _studentsDao.UpdateAsync(student);
-        }
     }
 }

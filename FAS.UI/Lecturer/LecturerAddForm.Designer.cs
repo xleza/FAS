@@ -1,6 +1,6 @@
-﻿namespace FAS.UI.Students
+﻿namespace FAS.UI
 {
-    partial class StudentAddFrom
+    partial class LecturersAddFromAddFrom
     {
         /// <summary>
         /// Required designer variable.
@@ -43,8 +43,6 @@
             this.OpenEnrollerBtn = new System.Windows.Forms.Button();
             this.ErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.PersonalIdTxt = new System.Windows.Forms.MaskedTextBox();
-            this.BirthDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.BirthDateLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FingerprintPicture)).BeginInit();
@@ -61,7 +59,7 @@
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(146, 641);
+            this.SaveBtn.Location = new System.Drawing.Point(146, 596);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(88, 43);
             this.SaveBtn.TabIndex = 5;
@@ -72,7 +70,7 @@
             // CancelBtn
             // 
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(240, 641);
+            this.CancelBtn.Location = new System.Drawing.Point(240, 596);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(88, 43);
             this.CancelBtn.TabIndex = 6;
@@ -100,7 +98,7 @@
             // ImageLbl
             // 
             this.ImageLbl.AutoSize = true;
-            this.ImageLbl.Location = new System.Drawing.Point(12, 163);
+            this.ImageLbl.Location = new System.Drawing.Point(12, 118);
             this.ImageLbl.Name = "ImageLbl";
             this.ImageLbl.Size = new System.Drawing.Size(46, 17);
             this.ImageLbl.TabIndex = 8;
@@ -109,7 +107,7 @@
             // ImageBox
             // 
             this.ImageBox.BackColor = System.Drawing.SystemColors.Window;
-            this.ImageBox.Location = new System.Drawing.Point(146, 163);
+            this.ImageBox.Location = new System.Drawing.Point(146, 118);
             this.ImageBox.Name = "ImageBox";
             this.ImageBox.Size = new System.Drawing.Size(187, 143);
             this.ImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -120,7 +118,7 @@
             // UploadImgBtn
             // 
             this.UploadImgBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.UploadImgBtn.Location = new System.Drawing.Point(166, 321);
+            this.UploadImgBtn.Location = new System.Drawing.Point(166, 276);
             this.UploadImgBtn.Name = "UploadImgBtn";
             this.UploadImgBtn.Size = new System.Drawing.Size(146, 43);
             this.UploadImgBtn.TabIndex = 3;
@@ -131,7 +129,7 @@
             // FingerPrintLbl
             // 
             this.FingerPrintLbl.AutoSize = true;
-            this.FingerPrintLbl.Location = new System.Drawing.Point(12, 391);
+            this.FingerPrintLbl.Location = new System.Drawing.Point(12, 346);
             this.FingerPrintLbl.Name = "FingerPrintLbl";
             this.FingerPrintLbl.Size = new System.Drawing.Size(81, 17);
             this.FingerPrintLbl.TabIndex = 11;
@@ -140,7 +138,7 @@
             // FingerprintPicture
             // 
             this.FingerprintPicture.BackColor = System.Drawing.SystemColors.Window;
-            this.FingerprintPicture.Location = new System.Drawing.Point(146, 382);
+            this.FingerprintPicture.Location = new System.Drawing.Point(146, 337);
             this.FingerprintPicture.Name = "FingerprintPicture";
             this.FingerprintPicture.Size = new System.Drawing.Size(187, 143);
             this.FingerprintPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -151,7 +149,7 @@
             // OpenEnrollerBtn
             // 
             this.OpenEnrollerBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.OpenEnrollerBtn.Location = new System.Drawing.Point(166, 546);
+            this.OpenEnrollerBtn.Location = new System.Drawing.Point(166, 501);
             this.OpenEnrollerBtn.Name = "OpenEnrollerBtn";
             this.OpenEnrollerBtn.Size = new System.Drawing.Size(146, 43);
             this.OpenEnrollerBtn.TabIndex = 4;
@@ -173,32 +171,12 @@
             this.PersonalIdTxt.ValidatingType = typeof(System.DateTime);
             this.PersonalIdTxt.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatePersonalId);
             // 
-            // BirthDatePicker
-            // 
-            this.BirthDatePicker.Location = new System.Drawing.Point(147, 113);
-            this.BirthDatePicker.Name = "BirthDatePicker";
-            this.BirthDatePicker.Size = new System.Drawing.Size(187, 22);
-            this.BirthDatePicker.TabIndex = 17;
-            this.BirthDatePicker.Value = new System.DateTime(2000, 12, 31, 0, 0, 0, 0);
-            this.BirthDatePicker.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidateBirthDate);
-            // 
-            // BirthDateLbl
-            // 
-            this.BirthDateLbl.AutoSize = true;
-            this.BirthDateLbl.Location = new System.Drawing.Point(12, 115);
-            this.BirthDateLbl.Name = "BirthDateLbl";
-            this.BirthDateLbl.Size = new System.Drawing.Size(71, 17);
-            this.BirthDateLbl.TabIndex = 16;
-            this.BirthDateLbl.Text = "Birth Date";
-            // 
             // StudentAddFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(465, 707);
-            this.Controls.Add(this.BirthDatePicker);
-            this.Controls.Add(this.BirthDateLbl);
+            this.ClientSize = new System.Drawing.Size(465, 657);
             this.Controls.Add(this.PersonalIdTxt);
             this.Controls.Add(this.OpenEnrollerBtn);
             this.Controls.Add(this.FingerprintPicture);
@@ -215,7 +193,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "StudentAddFrom";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "StudentAddFrom";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).EndInit();
@@ -241,7 +218,5 @@
         private System.Windows.Forms.Button OpenEnrollerBtn;
         private System.Windows.Forms.ErrorProvider ErrorProvider;
         private System.Windows.Forms.MaskedTextBox PersonalIdTxt;
-        private System.Windows.Forms.DateTimePicker BirthDatePicker;
-        private System.Windows.Forms.Label BirthDateLbl;
     }
 }

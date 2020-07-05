@@ -1,21 +1,21 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-using FAS.Core.Commands.Students;
+using FAS.Core.Commands.Lecturer;
 using FAS.Core.Services;
 
-namespace FAS.UI.Students
+namespace FAS.UI.Lecturers
 {
-    public partial class StudentAddFrom : Form
+    public partial class LecturerAddFrom : Form
     {
-        private readonly StudentsCommandService _studentsService;
+        private readonly LecturersCommandService _lecturersService;
 
         private byte[] _fingerPrintCheckSum;
 
-        public StudentAddFrom(StudentsCommandService studentsService)
+        public LecturerAddFrom(LecturersCommandService lecturersService)
         {
             InitializeComponent();
-            _studentsService = studentsService;
+            _lecturersService = lecturersService;
         }
 
         private void OnImgUpload(object sender, EventArgs e)
@@ -48,16 +48,15 @@ namespace FAS.UI.Students
                 return;
             SaveBtn.Enabled = false;
 
-            await _studentsService.CreateAsync(new CreateStudent
+            await _lecturersService.Create(new CreateLecturer
             {
                 Id = PersonalIdTxt.Text,
                 FullName = FullNameTxt.Text,
                 FingerprintChecksum = _fingerPrintCheckSum,
-                FingerprintImage = FingerprintPicture.Image.ToBytes(),
                 Image = ImageBox.Image.ToBytes(),
                 BirthDate = BirthDatePicker.Value
             })
-                .OnSuccess(() => MessageBoxWrapper.Info("Student created successfully"))
+                .OnSuccess(() => MessageBoxWrapper.Info("Lecturer created successfully"))
                 .OnError(MessageBoxWrapper.Error);
 
             SaveBtn.Enabled = true;

@@ -1,6 +1,6 @@
-﻿namespace FAS.UI.Students
+﻿namespace FAS.UI.Lecturers
 {
-    partial class StudentDetailsForm
+    partial class LecturerDetailsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,12 +32,10 @@
             this.FullNameLbl = new System.Windows.Forms.Label();
             this.BirthDateLbl = new System.Windows.Forms.Label();
             this.ImageBox = new System.Windows.Forms.PictureBox();
-            this.FingerprintBox = new System.Windows.Forms.PictureBox();
             this.PersonalIdValue = new System.Windows.Forms.Label();
             this.FullNameValue = new System.Windows.Forms.Label();
             this.BirthDateValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FingerprintBox)).BeginInit();
             this.SuspendLayout();
             // 
             // PersonalIdLbl
@@ -76,15 +74,6 @@
             this.ImageBox.TabIndex = 3;
             this.ImageBox.TabStop = false;
             // 
-            // FingerprintBox
-            // 
-            this.FingerprintBox.Location = new System.Drawing.Point(250, 208);
-            this.FingerprintBox.Name = "FingerprintBox";
-            this.FingerprintBox.Size = new System.Drawing.Size(240, 176);
-            this.FingerprintBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.FingerprintBox.TabIndex = 4;
-            this.FingerprintBox.TabStop = false;
-            // 
             // PersonalIdValue
             // 
             this.PersonalIdValue.AutoSize = true;
@@ -109,15 +98,14 @@
             this.BirthDateValue.Size = new System.Drawing.Size(0, 17);
             this.BirthDateValue.TabIndex = 7;
             // 
-            // StudentDetailsForm
+            // LecturerDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(506, 396);
+            this.ClientSize = new System.Drawing.Size(506, 207);
             this.Controls.Add(this.BirthDateValue);
             this.Controls.Add(this.FullNameValue);
             this.Controls.Add(this.PersonalIdValue);
-            this.Controls.Add(this.FingerprintBox);
             this.Controls.Add(this.ImageBox);
             this.Controls.Add(this.BirthDateLbl);
             this.Controls.Add(this.FullNameLbl);
@@ -125,11 +113,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "StudentDetailsForm";
+            this.Name = "LecturerDetailsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "StudentDetailsForm";
+            this.Text = "LecturerDetailsForm";
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FingerprintBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,7 +128,6 @@
         private System.Windows.Forms.Label FullNameLbl;
         private System.Windows.Forms.Label BirthDateLbl;
         private System.Windows.Forms.PictureBox ImageBox;
-        private System.Windows.Forms.PictureBox FingerprintBox;
         private System.Windows.Forms.Label PersonalIdValue;
         private System.Windows.Forms.Label FullNameValue;
         private System.Windows.Forms.Label BirthDateValue;
