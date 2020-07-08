@@ -65,6 +65,7 @@
     <Build Include="Lecturers.sql" />
     <Build Include="Seminars.sql" />
     <Build Include="SeminarAttendees.sql" />
+    <Build Include="SeminarsView.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="FAS.DB.refactorlog" />

@@ -6,11 +6,11 @@ using FAS.Core.Persistence;
 
 namespace FAS.Persistence
 {
-    public sealed class SeminarDao : Dao<Seminar, string>, ISeminarDao
+    public sealed class SeminarsDao : Dao<Seminar, string>, ISeminarDao
     {
         private readonly string _connectionString;
 
-        public SeminarDao(string connectionString) : base((nameof(Seminar.Id), DbType.AnsiString), "Seminars", connectionString)
+        public SeminarsDao(string connectionString) : base((nameof(Seminar.Id), DbType.AnsiString), "Seminars", connectionString)
         {
             _connectionString = connectionString;
         }

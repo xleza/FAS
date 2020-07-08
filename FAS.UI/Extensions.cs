@@ -35,5 +35,18 @@ namespace FAS.UI
                 onError(ex.Message);
             }
         }
+        public static async Task<T> OnError<T>(this Task<T> self, Action<string> onError)
+        {
+            try
+            {
+                return await self;
+            }
+            catch (Exception ex)
+            {
+                onError(ex.Message);
+            }
+
+            return default;
+        }
     }
 }

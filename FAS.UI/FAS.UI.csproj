@@ -94,6 +94,8 @@
     <Compile Include="Seminars\AddSeminarForm.Designer.cs">
       <DependentUpon>AddSeminarForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Seminars\Models\SeminarLecturerDto.cs" />
+    <Compile Include="Seminars\Models\SeminarsListItemDto.cs" />
     <Compile Include="Seminars\SeminarsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +152,9 @@
     <EmbeddedResource Include="Seminars\AddSeminarForm.resx">
       <DependentUpon>AddSeminarForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Seminars\SeminarsForm.resx">
+      <DependentUpon>SeminarsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Students\StudentAddForm.resx">
       <DependentUpon>StudentAddForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +167,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FAS.UI.Lecturers.Models.LecturersListItemDto.datasource" />
     <None Include="Properties\DataSources\FAS.UI.Models.StudentsListItemDto.datasource" />
+    <None Include="Properties\DataSources\FAS.UI.Seminars.Models.SeminarsListItemDto.datasource" />
     <None Include="Properties\DataSources\FAS.UI.Students.StudentsListItemDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

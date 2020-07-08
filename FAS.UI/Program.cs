@@ -43,12 +43,16 @@ namespace FAS.UI
 
                 var studentsDao = new StudentsDao(connectionString);
                 var lecturersDao = new LecturersDao(connectionString);
+                var seminarsDao = new SeminarsDao(connectionString);
 
                 Bind(typeof(IStudentsDao)).ToConstant(studentsDao);
                 Bind(typeof(StudentsDao)).ToConstant(studentsDao);
 
                 Bind(typeof(ILecturerDao)).ToConstant(lecturersDao);
                 Bind(typeof(LecturersDao)).ToConstant(lecturersDao);
+
+                Bind(typeof(ISeminarDao)).ToConstant(seminarsDao);
+                Bind(typeof(SeminarsDao)).ToConstant(seminarsDao);
 
                 Bind(typeof(StudentsCommandService)).ToSelf();
             }

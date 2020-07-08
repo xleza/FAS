@@ -69,35 +69,35 @@ namespace FAS.UI.Students
             => ValidateControl(
                 PersonalIdTxt,
                 !string.IsNullOrEmpty(PersonalIdTxt.Text),
-                $"{PersonalIdLbl.Name} Is Required",
+                "Personal Id Is Required",
                 e);
 
         private void OnValidateFullName(object sender, CancelEventArgs e)
             => ValidateControl(
                 FullNameTxt,
                 !string.IsNullOrEmpty(FullNameTxt.Text),
-                $"{FullNameLbl.Name} Is Required",
+                "Full Name Is Required",
                 e);
 
         private void OnValidateBirthDate(object sender, CancelEventArgs e)
             => ValidateControl(
                 BirthDatePicker,
                 BirthDatePicker.Value != default,
-                $"{BirthDateLbl.Name} Is Required",
+                "Birth Date Is Required",
                 e);
 
         private void OnValidateImage(object sender, CancelEventArgs e)
             => ValidateControl(
                 ImageBox,
                 ImageBox.Image != null,
-                $"{ImageLbl.Name} Is Required",
+                $"Image Is Required",
                 e);
 
         private void OnValidateFingerPrint(object sender, CancelEventArgs e)
             => ValidateControl(
                 FingerprintPicture,
                 FingerprintPicture.Image != null,
-                $"{FingerPrintLbl.Name} Is Required",
+                $"FingerPrint Is Required",
                 e);
 
         private void ValidateControl(Control ctrl, bool valid, string errorTxt, CancelEventArgs e)
