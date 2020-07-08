@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Seminars]
+(
+	[Id] VARCHAR(250) NOT NULL PRIMARY KEY,
+	[Name] NVARCHAR(250) NOT NULL,
+	[LecturerId] VARCHAR(250) NOT NULL,
+	FOREIGN KEY (LecturerId) REFERENCES Lecturers(Id)
+)

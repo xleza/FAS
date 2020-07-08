@@ -34,7 +34,6 @@
             this.CancelBtn = new System.Windows.Forms.Button();
             this.PersonalIdLbl = new System.Windows.Forms.Label();
             this.FullNameLbl = new System.Windows.Forms.Label();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.ImageLbl = new System.Windows.Forms.Label();
             this.ImageBox = new System.Windows.Forms.PictureBox();
             this.UploadImgBtn = new System.Windows.Forms.Button();
@@ -45,7 +44,6 @@
             this.PersonalIdTxt = new System.Windows.Forms.MaskedTextBox();
             this.BirthDateLbl = new System.Windows.Forms.Label();
             this.BirthDatePicker = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FingerprintPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
@@ -217,7 +215,6 @@
             this.Name = "LecturerAddFrom";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LecturerAddFrom";
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FingerprintPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
@@ -232,7 +229,6 @@
         private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.Label PersonalIdLbl;
         private System.Windows.Forms.Label FullNameLbl;
-        private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Label ImageLbl;
         private System.Windows.Forms.PictureBox ImageBox;
         private System.Windows.Forms.Button UploadImgBtn;

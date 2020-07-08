@@ -8,38 +8,43 @@ namespace FAS.Core.Entities
 {
     public sealed class Seminar
     {
-        public int Id { get; private set; }
+        public string Id { get; private set; }
         public string Name { get; private set; }
-        public int LecturerId { get; private set; }
-        public List<RegisteredAttendee> RegisteredAttendees { get; private set; }
+        public string LecturerId { get; private set; }
+        public List<SeminarAttendee> RegisteredAttendees { get; private set; }
 
         public Seminar(CreateSeminar cmd)
         {
+            Id = cmd.Id;
             Name = cmd.Name;
             LecturerId = cmd.LecturerId;
-            RegisteredAttendees = new List<RegisteredAttendee>();
+            RegisteredAttendees = new List<SeminarAttendee>();
         }
 
-        public void Change(ChangeSeminar cmd, SeminarSession lastSession)
-        {
-            if (lastSession.Status == SessionStatus.Current)
-                throw new DomainException("Can't change seminar during it session");
-
-            Name = cmd.Name;
-            LecturerId = cmd.LecturerId;
-        }
-
-        public void RegisterAttendee(RegisterAttendeeAtSeminar cmd)
+        public SeminarAttendee RegisterAttendee(RegisterAttendeeAtSeminar cmd)
         {
             var exist = RegisteredAttendees.Any(attendee => attendee.Id == cmd.AttendeeId);
             if (exist)
-                throw new ObjectAlreadyExitsException(cmd.AttendeeId, typeof(RegisteredAttendee));
+                throw new ObjectAlreadyExitsException(cmd.AttendeeId, typeof(SeminarAttendee));
 
-            RegisteredAttendees.Add(new RegisteredAttendee
+            var registeredAttendee = new SeminarAttendee
             {
                 Id = cmd.AttendeeId,
-                Time = DateTime.Now
-            });
+                RegistrationTime = DateTime.Now
+            };
+
+            RegisteredAttendees.Add(registeredAttendee);
+            return registeredAttendee;
+        }
+
+        public SeminarAttendee UnRegisterAttendee(UnRegisterAttendeeAtSeminar cmd)
+        {
+            var attendeeToRemove = RegisteredAttendees.FirstOrDefault(attendee => attendee.Id == cmd.AttendeeId);
+            if (attendeeToRemove == null)
+                throw new ObjectNotFoundException(cmd.AttendeeId, typeof(SeminarAttendee));
+            
+            RegisteredAttendees.Remove(attendeeToRemove);
+            return attendeeToRemove;
         }
     }
 }

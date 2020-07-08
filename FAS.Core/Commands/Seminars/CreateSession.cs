@@ -2,11 +2,13 @@
 {
     public class CreateSession
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
+        public string SeminarId { get; set; }
 
         public void Validate()
         {
-            Ensure.IsPositive(Id, nameof(Id));
+            Ensure.NotEmpty(Id, nameof(Id));
+            Ensure.NotEmpty(Id, nameof(Id));
         }
     }
 }

@@ -29,38 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.LecturerDetailsBtn = new FontAwesome.Sharp.IconButton();
             this.RefreshLecturerBtn = new FontAwesome.Sharp.IconButton();
             this.LecturerAddBtn = new FontAwesome.Sharp.IconButton();
             this.LecturersGrid = new System.Windows.Forms.DataGridView();
-            this.lecturersListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lecturersListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LecturersGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecturersListItemDtoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(252, 754);
-            this.panel1.TabIndex = 8;
-            // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
             this.panel2.Controls.Add(this.LecturerDetailsBtn);
             this.panel2.Controls.Add(this.RefreshLecturerBtn);
             this.panel2.Controls.Add(this.LecturerAddBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(252, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1121, 65);
+            this.panel2.Size = new System.Drawing.Size(1373, 64);
             this.panel2.TabIndex = 9;
             // 
             // LecturerDetailsBtn
@@ -124,19 +116,15 @@
             this.dataGridViewTextBoxColumn6});
             this.LecturersGrid.DataSource = this.lecturersListItemDtoBindingSource;
             this.LecturersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LecturersGrid.Location = new System.Drawing.Point(252, 65);
+            this.LecturersGrid.Location = new System.Drawing.Point(0, 64);
             this.LecturersGrid.Name = "LecturersGrid";
             this.LecturersGrid.ReadOnly = true;
             this.LecturersGrid.RowHeadersWidth = 51;
             this.LecturersGrid.RowTemplate.Height = 24;
-            this.LecturersGrid.Size = new System.Drawing.Size(1121, 689);
+            this.LecturersGrid.Size = new System.Drawing.Size(1373, 690);
             this.LecturersGrid.TabIndex = 10;
             this.LecturersGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnLecturersGridCellClick);
             this.LecturersGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnLecturersGridCellDoubleClick);
-            // 
-            // lecturersListItemDtoBindingSource
-            // 
-            this.lecturersListItemDtoBindingSource.DataSource = typeof(FAS.UI.Lecturers.Models.LecturersListItemDto);
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -165,6 +153,10 @@
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 125;
             // 
+            // lecturersListItemDtoBindingSource
+            // 
+            this.lecturersListItemDtoBindingSource.DataSource = typeof(FAS.UI.Lecturers.Models.LecturersListItemDto);
+            // 
             // LecturersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -172,7 +164,6 @@
             this.ClientSize = new System.Drawing.Size(1373, 754);
             this.Controls.Add(this.LecturersGrid);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Name = "LecturersForm";
             this.Text = "LecturersForm";
             this.panel2.ResumeLayout(false);
@@ -183,7 +174,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconButton LecturerAddBtn;
         private FontAwesome.Sharp.IconButton RefreshLecturerBtn;

@@ -88,6 +88,18 @@
     <Compile Include="Lecturers\LecturersForm.Designer.cs">
       <DependentUpon>LecturersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Seminars\AddSeminarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seminars\AddSeminarForm.Designer.cs">
+      <DependentUpon>AddSeminarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seminars\SeminarsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seminars\SeminarsForm.Designer.cs">
+      <DependentUpon>SeminarsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Students\Models\StudentsDetailsDto.cs" />
     <Compile Include="Students\Models\StudentsListItemDto.cs" />
     <Compile Include="Program.cs" />
@@ -134,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lecturers\LecturersForm.resx">
       <DependentUpon>LecturersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seminars\AddSeminarForm.resx">
+      <DependentUpon>AddSeminarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Students\StudentAddForm.resx">
       <DependentUpon>StudentAddForm.cs</DependentUpon>

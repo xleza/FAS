@@ -8,16 +8,17 @@ namespace FAS.Core.Entities
 {
     public class SeminarSession
     {
-        public int Id { get; set; }
-        public int SeminarId { get; set; }
-        public List<SessionAttendee> Attendees { get; set; }
-        public SessionStatus Status { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime? EndTime { get; set; }
+        public string Id { get; private set; }
+        public string SeminarId { get; private set; }
+        public List<SessionAttendee> Attendees { get; private set; }
+        public SessionStatus Status { get; private set; }
+        public DateTime StartTime { get; private set; }
+        public DateTime? EndTime { get; private set; }
 
         public SeminarSession(CreateSession cmd)
         {
-            SeminarId = cmd.Id;
+            Id = cmd.Id;
+            SeminarId = cmd.SeminarId;
             Attendees = new List<SessionAttendee>();
             Status = SessionStatus.Current;
             StartTime = DateTime.Now;

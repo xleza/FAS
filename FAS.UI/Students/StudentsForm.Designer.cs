@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.StudentDetailsBtn = new FontAwesome.Sharp.IconButton();
             this.RefreshStudentBtn = new FontAwesome.Sharp.IconButton();
@@ -44,23 +43,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.studentsListItemDtoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(252, 754);
-            this.panel1.TabIndex = 8;
-            // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
             this.panel2.Controls.Add(this.StudentDetailsBtn);
             this.panel2.Controls.Add(this.RefreshStudentBtn);
             this.panel2.Controls.Add(this.StudentAddBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(252, 0);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1121, 65);
+            this.panel2.Size = new System.Drawing.Size(1365, 64);
             this.panel2.TabIndex = 9;
             // 
             // StudentDetailsBtn
@@ -124,12 +116,12 @@
             this.dataGridViewTextBoxColumn3});
             this.StudentsGrid.DataSource = this.studentsListItemDtoBindingSource;
             this.StudentsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StudentsGrid.Location = new System.Drawing.Point(252, 65);
+            this.StudentsGrid.Location = new System.Drawing.Point(0, 64);
             this.StudentsGrid.Name = "StudentsGrid";
             this.StudentsGrid.ReadOnly = true;
             this.StudentsGrid.RowHeadersWidth = 51;
             this.StudentsGrid.RowTemplate.Height = 24;
-            this.StudentsGrid.Size = new System.Drawing.Size(1121, 689);
+            this.StudentsGrid.Size = new System.Drawing.Size(1365, 690);
             this.StudentsGrid.TabIndex = 10;
             this.StudentsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnStudentsGridCellClick);
             this.StudentsGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnStudentsGridCellDoubleClick);
@@ -169,10 +161,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1373, 754);
+            this.ClientSize = new System.Drawing.Size(1365, 754);
             this.Controls.Add(this.StudentsGrid);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Name = "StudentsForm";
             this.Text = "StudentsForm";
             this.panel2.ResumeLayout(false);
@@ -183,7 +174,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconButton StudentAddBtn;
         private FontAwesome.Sharp.IconButton RefreshStudentBtn;
