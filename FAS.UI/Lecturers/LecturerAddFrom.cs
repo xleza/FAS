@@ -113,6 +113,5 @@ namespace FAS.UI.Lecturers
                 ErrorProvider.SetError(ctrl, errorTxt);
             }
         }
-
     }
 }

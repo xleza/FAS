@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeminarsForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.SeminarAddBtn = new FontAwesome.Sharp.IconButton();
             this.SeminarAttendeesBtn = new FontAwesome.Sharp.IconButton();
             this.RefreshSeminarsBtn = new FontAwesome.Sharp.IconButton();
             this.SeminarsGrid = new System.Windows.Forms.DataGridView();
+            this.seminarsListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lecturerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lecturerNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seminarsListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SeminarsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seminarsListItemDtoBindingSource)).BeginInit();
@@ -46,6 +47,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
             this.panel1.Controls.Add(this.SeminarAddBtn);
             this.panel1.Controls.Add(this.SeminarAttendeesBtn);
             this.panel1.Controls.Add(this.RefreshSeminarsBtn);
@@ -125,6 +127,10 @@
             this.SeminarsGrid.TabIndex = 1;
             this.SeminarsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnSeminarsGridCellClick);
             // 
+            // seminarsListItemDtoBindingSource
+            // 
+            this.seminarsListItemDtoBindingSource.DataSource = typeof(FAS.UI.Seminars.Models.SeminarsListItemDto);
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -144,7 +150,7 @@
             // lecturerIdDataGridViewTextBoxColumn
             // 
             this.lecturerIdDataGridViewTextBoxColumn.DataPropertyName = "LecturerId";
-            this.lecturerIdDataGridViewTextBoxColumn.HeaderText = "LecturerId";
+            this.lecturerIdDataGridViewTextBoxColumn.HeaderText = "Personal Id";
             this.lecturerIdDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lecturerIdDataGridViewTextBoxColumn.Name = "lecturerIdDataGridViewTextBoxColumn";
             this.lecturerIdDataGridViewTextBoxColumn.Width = 125;
@@ -152,14 +158,10 @@
             // lecturerNameDataGridViewTextBoxColumn
             // 
             this.lecturerNameDataGridViewTextBoxColumn.DataPropertyName = "LecturerName";
-            this.lecturerNameDataGridViewTextBoxColumn.HeaderText = "LecturerName";
+            this.lecturerNameDataGridViewTextBoxColumn.HeaderText = "Full Name";
             this.lecturerNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lecturerNameDataGridViewTextBoxColumn.Name = "lecturerNameDataGridViewTextBoxColumn";
             this.lecturerNameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // seminarsListItemDtoBindingSource
-            // 
-            this.seminarsListItemDtoBindingSource.DataSource = typeof(FAS.UI.Seminars.Models.SeminarsListItemDto);
             // 
             // SeminarsForm
             // 
@@ -168,8 +170,9 @@
             this.ClientSize = new System.Drawing.Size(1005, 673);
             this.Controls.Add(this.SeminarsGrid);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SeminarsForm";
-            this.Text = "SeminarsForm";
+            this.Text = "Seminars";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SeminarsGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seminarsListItemDtoBindingSource)).EndInit();
@@ -182,12 +185,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView SeminarsGrid;
         private System.Windows.Forms.BindingSource seminarsListItemDtoBindingSource;
+        private FontAwesome.Sharp.IconButton RefreshSeminarsBtn;
+        private FontAwesome.Sharp.IconButton SeminarAddBtn;
+        private FontAwesome.Sharp.IconButton SeminarAttendeesBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lecturerIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lecturerNameDataGridViewTextBoxColumn;
-        private FontAwesome.Sharp.IconButton RefreshSeminarsBtn;
-        private FontAwesome.Sharp.IconButton SeminarAddBtn;
-        private FontAwesome.Sharp.IconButton SeminarAttendeesBtn;
     }
 }

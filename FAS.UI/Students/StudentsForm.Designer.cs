@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentsForm));
             this.panel2 = new System.Windows.Forms.Panel();
             this.StudentDetailsBtn = new FontAwesome.Sharp.IconButton();
             this.RefreshStudentBtn = new FontAwesome.Sharp.IconButton();
             this.StudentAddBtn = new FontAwesome.Sharp.IconButton();
             this.StudentsGrid = new System.Windows.Forms.DataGridView();
+            this.studentsListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentsListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsListItemDtoBindingSource)).BeginInit();
@@ -126,10 +128,14 @@
             this.StudentsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnStudentsGridCellClick);
             this.StudentsGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnStudentsGridCellDoubleClick);
             // 
+            // studentsListItemDtoBindingSource
+            // 
+            this.studentsListItemDtoBindingSource.DataSource = typeof(FAS.UI.Students.StudentsListItemDto);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Personal Id";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
@@ -138,7 +144,7 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.DataPropertyName = "FullName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "FullName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Full Name";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
@@ -147,15 +153,14 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "BirthDate";
-            this.dataGridViewTextBoxColumn3.HeaderText = "BirthDate";
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Birth Date";
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 125;
-            // 
-            // studentsListItemDtoBindingSource
-            // 
-            this.studentsListItemDtoBindingSource.DataSource = typeof(FAS.UI.Students.StudentsListItemDto);
             // 
             // StudentsForm
             // 
@@ -164,8 +169,9 @@
             this.ClientSize = new System.Drawing.Size(1365, 754);
             this.Controls.Add(this.StudentsGrid);
             this.Controls.Add(this.panel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StudentsForm";
-            this.Text = "StudentsForm";
+            this.Text = "Students";
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.StudentsGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsListItemDtoBindingSource)).EndInit();

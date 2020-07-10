@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDetailsForm));
             this.PersonalIdLbl = new System.Windows.Forms.Label();
             this.FullNameLbl = new System.Windows.Forms.Label();
             this.BirthDateLbl = new System.Windows.Forms.Label();
@@ -123,11 +124,12 @@
             this.Controls.Add(this.FullNameLbl);
             this.Controls.Add(this.PersonalIdLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "StudentDetailsForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "StudentDetailsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Student Details";
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FingerprintBox)).EndInit();
             this.ResumeLayout(false);

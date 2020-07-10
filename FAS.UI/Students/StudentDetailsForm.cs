@@ -24,7 +24,7 @@ namespace FAS.UI.Students
                 .OnError(_ => MessageBoxWrapper.Error("Can't get student"));
             PersonalIdValue.Text = student.Id;
             FullNameValue.Text = student.FullName;
-            BirthDateValue.Text = student.BirthDate.ToShortDateString();
+            BirthDateValue.Text = student.BirthDate.ToString("MM/dd/yyyy");
             ImageBox.Image = student.Image.ToBitmap();
             FingerprintBox.Image = student.FingerprintImage.ToBitmap();
         }

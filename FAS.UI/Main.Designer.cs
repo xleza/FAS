@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.Menu = new System.Windows.Forms.Panel();
             this.SeminarMenuBtn = new FontAwesome.Sharp.IconButton();
             this.LecturerMenuBtn = new FontAwesome.Sharp.IconButton();
@@ -209,8 +210,9 @@
             this.Controls.Add(this.Desktop);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Menu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "Fingerprint Attendance System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Menu.ResumeLayout(false);
             this.Logo.ResumeLayout(false);

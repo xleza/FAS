@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeminarAttendeesForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.RemoveSeminarAttendeeBtn = new FontAwesome.Sharp.IconButton();
             this.AddSeminarAttendeeBtn = new FontAwesome.Sharp.IconButton();
@@ -125,7 +126,7 @@
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Personal Id";
             this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.Width = 125;
@@ -133,7 +134,7 @@
             // fullNameDataGridViewTextBoxColumn
             // 
             this.fullNameDataGridViewTextBoxColumn.DataPropertyName = "FullName";
-            this.fullNameDataGridViewTextBoxColumn.HeaderText = "FullName";
+            this.fullNameDataGridViewTextBoxColumn.HeaderText = "Full Name";
             this.fullNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.fullNameDataGridViewTextBoxColumn.Name = "fullNameDataGridViewTextBoxColumn";
             this.fullNameDataGridViewTextBoxColumn.Width = 125;
@@ -141,10 +142,10 @@
             // registrationTimeDataGridViewTextBoxColumn
             // 
             this.registrationTimeDataGridViewTextBoxColumn.DataPropertyName = "RegistrationTime";
-            this.registrationTimeDataGridViewTextBoxColumn.HeaderText = "RegistrationTime";
+            this.registrationTimeDataGridViewTextBoxColumn.HeaderText = "Registration Time";
             this.registrationTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.registrationTimeDataGridViewTextBoxColumn.Name = "registrationTimeDataGridViewTextBoxColumn";
-            this.registrationTimeDataGridViewTextBoxColumn.Width = 125;
+            this.registrationTimeDataGridViewTextBoxColumn.Width = 200;
             // 
             // seminarAttendeesListItemDtoBindingSource
             // 
@@ -157,6 +158,7 @@
             this.ClientSize = new System.Drawing.Size(984, 578);
             this.Controls.Add(this.AttendeesGrid);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SeminarAttendeesForm";
@@ -177,9 +179,9 @@
         private FontAwesome.Sharp.IconButton AddSeminarAttendeeBtn;
         private FontAwesome.Sharp.IconButton RefreshSeminarAttendeesBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource seminarAttendeesListItemDtoBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn registrationTimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource seminarAttendeesListItemDtoBindingSource;
     }
 }

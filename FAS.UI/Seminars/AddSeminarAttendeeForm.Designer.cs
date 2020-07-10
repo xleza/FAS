@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSeminarAttendeeForm));
             this.Attendees = new System.Windows.Forms.ListView();
             this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FullName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -103,9 +104,10 @@
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Ok);
             this.Controls.Add(this.Attendees);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddSeminarAttendeeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddSeminarAttendeeForm";
+            this.Text = "Add Seminar Attendee";
             this.ResumeLayout(false);
 
         }

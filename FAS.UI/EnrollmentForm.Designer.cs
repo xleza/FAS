@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EnrollmentForm));
             this.picture = new System.Windows.Forms.PictureBox();
             this.log = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
@@ -66,10 +67,12 @@
             this.Controls.Add(this.picture);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EnrollmentForm";
-            this.Text = "EnrollmentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Enrollment";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EnrollmentForm_FormClosed);
             this.Load += new System.EventHandler(this.EnrollmentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();

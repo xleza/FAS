@@ -23,7 +23,7 @@ namespace FAS.UI.Lecturers
             var lecturer = await _dao.GetAsync<LecturerDetailsDto>(_id);
             PersonalIdValue.Text = lecturer.Id;
             FullNameValue.Text = lecturer.FullName;
-            BirthDateValue.Text = lecturer.BirthDate.ToShortDateString();
+            BirthDateValue.Text = lecturer.BirthDate.ToString("MM/dd/yyyy");
             ImageBox.Image = lecturer.Image.ToBitmap();
         }
     }

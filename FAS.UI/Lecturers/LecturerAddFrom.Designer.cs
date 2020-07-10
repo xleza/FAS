@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LecturerAddFrom));
             this.FullNameTxt = new System.Windows.Forms.TextBox();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
@@ -182,6 +183,7 @@
             // 
             // BirthDatePicker
             // 
+            this.BirthDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.BirthDatePicker.Location = new System.Drawing.Point(146, 111);
             this.BirthDatePicker.Name = "BirthDatePicker";
             this.BirthDatePicker.Size = new System.Drawing.Size(187, 22);
@@ -210,11 +212,12 @@
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.FullNameTxt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LecturerAddFrom";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "LecturerAddFrom";
+            this.Text = "Add Lecturer";
             ((System.ComponentModel.ISupportInitialize)(this.ImageBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FingerprintPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
