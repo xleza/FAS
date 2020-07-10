@@ -42,8 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dao.cs" />
+    <Compile Include="IQueryable.cs" />
+    <Compile Include="IQueryDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LecturersDao.cs" />
+    <Compile Include="QueryAttributes\PkAttribute.cs" />
+    <Compile Include="QueryAttributes\TableNameAttribute.cs" />
+    <Compile Include="QueryDao.cs" />
     <Compile Include="SeminarsDao.cs" />
     <Compile Include="StudentsDao.cs" />
   </ItemGroup>
@@ -53,5 +58,6 @@
       <Name>FAS.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,18 +41,15 @@ namespace FAS.UI
                     default: throw new NotImplementedException($"Device {device} not implemented");
                 }
 
-                var studentsDao = new StudentsDao(connectionString);
-                var lecturersDao = new LecturersDao(connectionString);
-                var seminarsDao = new SeminarsDao(connectionString);
+                var queryDao = new QueryDao(connectionString);
 
-                Bind(typeof(IStudentsDao)).ToConstant(studentsDao);
-                Bind(typeof(StudentsDao)).ToConstant(studentsDao);
+                Bind(typeof(IQueryDao)).ToConstant(queryDao);
 
-                Bind(typeof(ILecturerDao)).ToConstant(lecturersDao);
-                Bind(typeof(LecturersDao)).ToConstant(lecturersDao);
+                Bind(typeof(IStudentsDao)).ToConstant(new StudentsDao(connectionString));
 
-                Bind(typeof(ISeminarDao)).ToConstant(seminarsDao);
-                Bind(typeof(SeminarsDao)).ToConstant(seminarsDao);
+                Bind(typeof(ILecturerDao)).ToConstant(new LecturersDao(connectionString));
+
+                Bind(typeof(ISeminarDao)).ToConstant(new SeminarsDao(connectionString));
 
                 Bind(typeof(StudentsCommandService)).ToSelf();
             }

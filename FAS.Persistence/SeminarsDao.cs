@@ -1,7 +1,10 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using FAS.Core.Entities;
+using FAS.Core.Exceptions;
 using FAS.Core.Persistence;
 
 namespace FAS.Persistence
@@ -69,7 +72,7 @@ namespace FAS.Persistence
         {
             using (var conn = new SqlConnection(_connectionString))
             {
-                using (var cmd = new SqlCommand("Remove FROM [SeminarAttendees] WHERE [Id] = @Id AND [SeminarId] = @SeminarId", conn))
+                using (var cmd = new SqlCommand("DELETE FROM [SeminarAttendees] WHERE [Id] = @Id AND [SeminarId] = @SeminarId", conn))
                 {
                     cmd.Parameters.AddWithValue("@Id", attendee.Id);
                     cmd.Parameters.AddWithValue("@SeminarId", attendee.SeminarId);
@@ -79,9 +82,59 @@ namespace FAS.Persistence
             }
         }
 
-        public Task<Seminar> GetAsync(string id)
+        public async Task<Seminar> GetAsync(string id)
         {
-            throw new System.NotImplementedException();
+            const string sql = @"SELECT se.[Id]
+                                      ,se.[Name]
+                                      ,se.[LecturerId]
+	                                  ,sa.Id AS AttendeeId
+	                                  ,sa.RegistrationTime
+                                  FROM [dbo].[Seminars] se
+	                                LEFT JOIN [dbo].[SeminarAttendees] sa
+	                                ON se.Id = sa.SeminarId
+	                                WHERE se.Id = @Id";
+
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Id", id);
+
+                    await conn.OpenAsync();
+
+                    var reader = await cmd.ExecuteReaderAsync();
+                    if (!reader.HasRows)
+                        throw new ObjectNotFoundException(id, typeof(Seminar));
+
+                    Seminar result = null;
+
+                    while (await reader.ReadAsync())
+                    {
+                        if (result == null)
+                        {
+                            result = new Seminar
+                            {
+                                Id = id,
+                                LecturerId = reader.GetString(reader.GetOrdinal("LecturerId")),
+                                Name = reader.GetString(reader.GetOrdinal("Name")),
+                                RegisteredAttendees = new List<SeminarAttendee>()
+                            };
+                        }
+
+                        if (reader[reader.GetOrdinal("AttendeeId")] is DBNull)
+                            break;
+
+                        result.RegisteredAttendees.Add(new SeminarAttendee
+                        {
+                            Id = reader.GetString(reader.GetOrdinal("AttendeeId")),
+                            SeminarId = id,
+                            RegistrationTime = reader.GetDateTime(reader.GetOrdinal("RegistrationTime")),
+                        });
+                    }
+
+                    return result;
+                }
+            }
         }
     }
 }

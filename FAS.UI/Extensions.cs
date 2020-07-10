@@ -24,6 +24,15 @@ namespace FAS.UI
             onSuccess();
         }
 
+        public static async Task<T> OnSuccess<T>(this Task<T> self, Action onSuccess)
+        {
+            var result = await self;
+
+            onSuccess();
+
+            return result;
+        }
+
         public static async Task OnError(this Task self, Action<string> onError)
         {
             try
@@ -37,16 +46,17 @@ namespace FAS.UI
         }
         public static async Task<T> OnError<T>(this Task<T> self, Action<string> onError)
         {
+            T result = default;
             try
             {
-                return await self;
+                result = await self;
             }
             catch (Exception ex)
             {
                 onError(ex.Message);
             }
 
-            return default;
+            return result;
         }
     }
 }

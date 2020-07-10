@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.SeminarsGrid = new System.Windows.Forms.DataGridView();
-            this.SeminarDetailsBtn = new FontAwesome.Sharp.IconButton();
-            this.RefreshSeminarsBtn = new FontAwesome.Sharp.IconButton();
             this.SeminarAddBtn = new FontAwesome.Sharp.IconButton();
+            this.SeminarAttendeesBtn = new FontAwesome.Sharp.IconButton();
+            this.RefreshSeminarsBtn = new FontAwesome.Sharp.IconButton();
+            this.SeminarsGrid = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lecturerIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,14 +46,63 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.SeminarDetailsBtn);
-            this.panel1.Controls.Add(this.RefreshSeminarsBtn);
             this.panel1.Controls.Add(this.SeminarAddBtn);
+            this.panel1.Controls.Add(this.SeminarAttendeesBtn);
+            this.panel1.Controls.Add(this.RefreshSeminarsBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1005, 64);
             this.panel1.TabIndex = 0;
+            // 
+            // SeminarAddBtn
+            // 
+            this.SeminarAddBtn.FlatAppearance.BorderSize = 0;
+            this.SeminarAddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SeminarAddBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.SeminarAddBtn.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.SeminarAddBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.SeminarAddBtn.IconSize = 48;
+            this.SeminarAddBtn.Location = new System.Drawing.Point(52, 8);
+            this.SeminarAddBtn.Name = "SeminarAddBtn";
+            this.SeminarAddBtn.Rotation = 0D;
+            this.SeminarAddBtn.Size = new System.Drawing.Size(53, 57);
+            this.SeminarAddBtn.TabIndex = 16;
+            this.SeminarAddBtn.UseVisualStyleBackColor = true;
+            this.SeminarAddBtn.Click += new System.EventHandler(this.OnSeminarAddBtnClick);
+            // 
+            // SeminarAttendeesBtn
+            // 
+            this.SeminarAttendeesBtn.Enabled = false;
+            this.SeminarAttendeesBtn.FlatAppearance.BorderSize = 0;
+            this.SeminarAttendeesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SeminarAttendeesBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.SeminarAttendeesBtn.IconChar = FontAwesome.Sharp.IconChar.Users;
+            this.SeminarAttendeesBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.SeminarAttendeesBtn.IconSize = 48;
+            this.SeminarAttendeesBtn.Location = new System.Drawing.Point(102, 8);
+            this.SeminarAttendeesBtn.Name = "SeminarAttendeesBtn";
+            this.SeminarAttendeesBtn.Rotation = 0D;
+            this.SeminarAttendeesBtn.Size = new System.Drawing.Size(53, 57);
+            this.SeminarAttendeesBtn.TabIndex = 19;
+            this.SeminarAttendeesBtn.UseVisualStyleBackColor = true;
+            this.SeminarAttendeesBtn.Click += new System.EventHandler(this.OnSeminarAttendeesBtnClick);
+            // 
+            // RefreshSeminarsBtn
+            // 
+            this.RefreshSeminarsBtn.FlatAppearance.BorderSize = 0;
+            this.RefreshSeminarsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshSeminarsBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.RefreshSeminarsBtn.IconChar = FontAwesome.Sharp.IconChar.Sync;
+            this.RefreshSeminarsBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.RefreshSeminarsBtn.IconSize = 48;
+            this.RefreshSeminarsBtn.Location = new System.Drawing.Point(3, 8);
+            this.RefreshSeminarsBtn.Name = "RefreshSeminarsBtn";
+            this.RefreshSeminarsBtn.Rotation = 0D;
+            this.RefreshSeminarsBtn.Size = new System.Drawing.Size(53, 57);
+            this.RefreshSeminarsBtn.TabIndex = 17;
+            this.RefreshSeminarsBtn.UseVisualStyleBackColor = true;
+            this.RefreshSeminarsBtn.Click += new System.EventHandler(this.OnRefreshSeminarsBtnClick);
             // 
             // SeminarsGrid
             // 
@@ -74,53 +123,7 @@
             this.SeminarsGrid.RowTemplate.Height = 24;
             this.SeminarsGrid.Size = new System.Drawing.Size(1005, 609);
             this.SeminarsGrid.TabIndex = 1;
-            // 
-            // SeminarDetailsBtn
-            // 
-            this.SeminarDetailsBtn.Enabled = false;
-            this.SeminarDetailsBtn.FlatAppearance.BorderSize = 0;
-            this.SeminarDetailsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SeminarDetailsBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.SeminarDetailsBtn.IconChar = FontAwesome.Sharp.IconChar.Eye;
-            this.SeminarDetailsBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
-            this.SeminarDetailsBtn.IconSize = 48;
-            this.SeminarDetailsBtn.Location = new System.Drawing.Point(55, 7);
-            this.SeminarDetailsBtn.Name = "SeminarDetailsBtn";
-            this.SeminarDetailsBtn.Rotation = 0D;
-            this.SeminarDetailsBtn.Size = new System.Drawing.Size(53, 57);
-            this.SeminarDetailsBtn.TabIndex = 18;
-            this.SeminarDetailsBtn.UseVisualStyleBackColor = true;
-            // 
-            // RefreshSeminarsBtn
-            // 
-            this.RefreshSeminarsBtn.FlatAppearance.BorderSize = 0;
-            this.RefreshSeminarsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RefreshSeminarsBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.RefreshSeminarsBtn.IconChar = FontAwesome.Sharp.IconChar.Sync;
-            this.RefreshSeminarsBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
-            this.RefreshSeminarsBtn.IconSize = 48;
-            this.RefreshSeminarsBtn.Location = new System.Drawing.Point(3, 8);
-            this.RefreshSeminarsBtn.Name = "RefreshSeminarsBtn";
-            this.RefreshSeminarsBtn.Rotation = 0D;
-            this.RefreshSeminarsBtn.Size = new System.Drawing.Size(53, 57);
-            this.RefreshSeminarsBtn.TabIndex = 17;
-            this.RefreshSeminarsBtn.UseVisualStyleBackColor = true;
-            // 
-            // SeminarAddBtn
-            // 
-            this.SeminarAddBtn.FlatAppearance.BorderSize = 0;
-            this.SeminarAddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SeminarAddBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.SeminarAddBtn.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
-            this.SeminarAddBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
-            this.SeminarAddBtn.IconSize = 48;
-            this.SeminarAddBtn.Location = new System.Drawing.Point(111, 8);
-            this.SeminarAddBtn.Name = "SeminarAddBtn";
-            this.SeminarAddBtn.Rotation = 0D;
-            this.SeminarAddBtn.Size = new System.Drawing.Size(53, 57);
-            this.SeminarAddBtn.TabIndex = 16;
-            this.SeminarAddBtn.UseVisualStyleBackColor = true;
-            this.SeminarAddBtn.Click += new System.EventHandler(this.OnSeminarAddBtnClick);
+            this.SeminarsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnSeminarsGridCellClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -183,8 +186,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lecturerIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lecturerNameDataGridViewTextBoxColumn;
-        private FontAwesome.Sharp.IconButton SeminarDetailsBtn;
         private FontAwesome.Sharp.IconButton RefreshSeminarsBtn;
         private FontAwesome.Sharp.IconButton SeminarAddBtn;
+        private FontAwesome.Sharp.IconButton SeminarAttendeesBtn;
     }
 }

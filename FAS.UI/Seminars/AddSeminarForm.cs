@@ -11,26 +11,26 @@ namespace FAS.UI.Seminars
 {
     public partial class AddSeminarForm : Form
     {
-        private readonly SeminarsDao _seminarsDao;
-        private readonly LecturersDao _lecturersDao;
+        private readonly IQueryDao _queryDao;
         private readonly SeminarCommandService _seminarService;
 
         private (int index, SeminarLecturerDto) _selectedLecture;
 
-        public AddSeminarForm(SeminarsDao seminarsDao, LecturersDao lecturersDao, SeminarCommandService seminarService)
+        public AddSeminarForm(IQueryDao queryDao, SeminarCommandService seminarService)
         {
             InitializeComponent();
 
-            _seminarsDao = seminarsDao;
-            _lecturersDao = lecturersDao;
+            _queryDao = queryDao;
             _seminarService = seminarService;
 
+#pragma warning disable 4014
             FillLecturersAsync();
+#pragma warning restore 4014
         }
 
         private async Task FillLecturersAsync()
         {
-            var lecturers = await _lecturersDao.ListAsync<SeminarLecturerDto>()
+            var lecturers = await _queryDao.ListAsync<SeminarLecturerDto>()
                 .OnError(_ => MessageBoxWrapper.Error("Can't fill lecturers"));
 
             LecturersCheckedListBox.DataSource = lecturers;
@@ -44,11 +44,11 @@ namespace FAS.UI.Seminars
             SaveBtn.Enabled = false;
 
             await _seminarService.CreateAsync(new CreateSeminar
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = FullNameTxt.Text,
-                    LecturerId = _selectedLecture.Item2.Id
-                })
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = FullNameTxt.Text,
+                LecturerId = _selectedLecture.Item2.Id
+            })
                 .OnSuccess(() => MessageBoxWrapper.Info("Seminar created successfully"))
                 .OnError(MessageBoxWrapper.Error);
 

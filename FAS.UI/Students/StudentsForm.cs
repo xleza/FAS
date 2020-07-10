@@ -8,12 +8,13 @@ namespace FAS.UI.Students
 {
     public partial class StudentsForm : Form
     {
-        private readonly StudentsDao _studentsDao;
+        private readonly IQueryDao _queryDao;
         private string _selectedStudentId;
 
-        public StudentsForm(StudentsDao studentsDao)
+        public StudentsForm(IQueryDao queryDao)
         {
-            _studentsDao = studentsDao;
+            _queryDao = queryDao;
+
             InitializeComponent();
             RefreshTableAsync();
         }
@@ -39,7 +40,9 @@ namespace FAS.UI.Students
 
         private async Task RefreshTableAsync()
         {
-            var students = await _studentsDao.ListAsync<StudentsListItemDto>();
+            var students = await _queryDao.ListAsync<StudentsListItemDto>()
+                .OnError(_ => MessageBoxWrapper.Error("Can't fill students"));
+
             studentsListItemDtoBindingSource.DataSource = students;
 
             _selectedStudentId = students.FirstOrDefault()?.Id;
@@ -49,7 +52,7 @@ namespace FAS.UI.Students
 
         private void OnStudentsGridCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex <= 0)
+            if (e.RowIndex < 0)
                 return;
             _selectedStudentId = StudentsGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
@@ -63,7 +66,7 @@ namespace FAS.UI.Students
             if (_selectedStudentId == null)
                 return;
 
-            new StudentDetailsForm(_selectedStudentId, DependencyResolver.Resolve<StudentsDao>()).ShowDialog();
+            new StudentDetailsForm(_selectedStudentId, DependencyResolver.Resolve<IQueryDao>()).ShowDialog();
         }
     }
 }

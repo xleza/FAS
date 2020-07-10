@@ -7,9 +7,9 @@ namespace FAS.UI.Students
     public partial class StudentDetailsForm : Form
     {
         private readonly string _id;
-        private readonly StudentsDao _dao;
+        private readonly IQueryDao _dao;
 
-        public StudentDetailsForm(string id, StudentsDao dao)
+        public StudentDetailsForm(string id, IQueryDao dao)
         {
             InitializeComponent();
             _id = id;
@@ -20,7 +20,8 @@ namespace FAS.UI.Students
 
         private async void FillFormAsync()
         {
-            var student = await _dao.GetAsync<StudentsDetailsDto>(_id);
+            var student = await _dao.GetAsync<StudentsDetailsDto>(_id)
+                .OnError(_ => MessageBoxWrapper.Error("Can't get student"));
             PersonalIdValue.Text = student.Id;
             FullNameValue.Text = student.FullName;
             BirthDateValue.Text = student.BirthDate.ToShortDateString();

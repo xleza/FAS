@@ -8,10 +8,15 @@ namespace FAS.Core.Entities
 {
     public sealed class Seminar
     {
-        public string Id { get; private set; }
-        public string Name { get; private set; }
-        public string LecturerId { get; private set; }
-        public List<SeminarAttendee> RegisteredAttendees { get; private set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string LecturerId { get; set; }
+        public List<SeminarAttendee> RegisteredAttendees { get; set; }
+
+        public Seminar()
+        {
+
+        }
 
         public Seminar(CreateSeminar cmd)
         {
@@ -30,6 +35,7 @@ namespace FAS.Core.Entities
             var registeredAttendee = new SeminarAttendee
             {
                 Id = cmd.AttendeeId,
+                SeminarId = cmd.Id,
                 RegistrationTime = DateTime.Now
             };
 
@@ -42,7 +48,7 @@ namespace FAS.Core.Entities
             var attendeeToRemove = RegisteredAttendees.FirstOrDefault(attendee => attendee.Id == cmd.AttendeeId);
             if (attendeeToRemove == null)
                 throw new ObjectNotFoundException(cmd.AttendeeId, typeof(SeminarAttendee));
-            
+
             RegisteredAttendees.Remove(attendeeToRemove);
             return attendeeToRemove;
         }

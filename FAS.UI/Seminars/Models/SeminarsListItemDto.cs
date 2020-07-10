@@ -1,6 +1,9 @@
-﻿namespace FAS.UI.Seminars.Models
+﻿using FAS.Persistence;
+
+namespace FAS.UI.Seminars.Models
 {
-    public sealed class SeminarsListItemDto
+    [TableName("SeminarsView")]
+    public sealed class SeminarsListItemDto : IQueryable
     {
         public string Id { get; set; }
         public string Name { get; set; }

@@ -7,9 +7,9 @@ namespace FAS.UI.Lecturers
     public partial class LecturerDetailsForm : Form
     {
         private readonly string _id;
-        private readonly LecturersDao _dao;
+        private readonly IQueryDao _dao;
 
-        public LecturerDetailsForm(string id, LecturersDao dao)
+        public LecturerDetailsForm(string id, IQueryDao dao)
         {
             InitializeComponent();
             _id = id;

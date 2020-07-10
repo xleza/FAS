@@ -9,12 +9,13 @@ namespace FAS.UI.Lecturers
 {
     public partial class LecturersForm : Form
     {
-        private readonly LecturersDao _lecturersDao;
+        private readonly IQueryDao _queryDao;
         private string _selectedStudentId;
 
-        public LecturersForm(LecturersDao lecturersDao)
+        public LecturersForm(IQueryDao queryDao)
         {
-            _lecturersDao = lecturersDao;
+            _queryDao = queryDao;
+
             InitializeComponent();
             RefreshTableAsync();
         }
@@ -40,7 +41,7 @@ namespace FAS.UI.Lecturers
 
         private async Task RefreshTableAsync()
         {
-            var lecturers = await _lecturersDao.ListAsync<LecturersListItemDto>();
+            var lecturers = await _queryDao.ListAsync<LecturersListItemDto>();
             lecturersListItemDtoBindingSource.DataSource = lecturers;
 
             _selectedStudentId = lecturers.FirstOrDefault()?.Id;
@@ -50,7 +51,7 @@ namespace FAS.UI.Lecturers
 
         private void OnLecturersGridCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex <= 0)
+            if (e.RowIndex < 0)
                 return;
 
             _selectedStudentId = LecturersGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
@@ -65,7 +66,7 @@ namespace FAS.UI.Lecturers
             if (_selectedStudentId == null)
                 return;
 
-            new LecturerDetailsForm(_selectedStudentId, DependencyResolver.Resolve<LecturersDao>()).ShowDialog();
+            new LecturerDetailsForm(_selectedStudentId, DependencyResolver.Resolve<IQueryDao>()).ShowDialog();
         }
     }
 }
