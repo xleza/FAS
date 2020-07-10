@@ -33,7 +33,6 @@ namespace FAS.UI.Seminars
             _selectedSeminarId = seminars.FirstOrDefault()?.Id;
             if (_selectedSeminarId != null)
             {
-                SeminarDetailsBtn.Enabled = true;
                 SeminarAttendeesBtn.Enabled = true;
             }
         }
