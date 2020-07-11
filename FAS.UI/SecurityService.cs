@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using FAS.Core;
 using FAS.Persistence;
-using FAS.UI.Lecturers.Models;
+using FAS.UI.Profile;
 
 namespace FAS.UI
 {
@@ -20,7 +19,7 @@ namespace FAS.UI
 
         public bool IsAuthorized()
         {
-            var lecturers = _queryDao.List<LecturersListItemDto>();
+            var lecturers = _queryDao.List<ProfileListItemDto>();
             var verificationForm = new VerificationForm(
                 DependencyResolver.Resolve<IFingerprintVerifier>(),
                 lecturers.Select(lecturer => lecturer.FingerprintChecksum).ToList());

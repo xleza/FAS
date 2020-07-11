@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3CB80E6D-6176-47E8-9B56-9A80F539F772}</ProjectGuid>
+    <ProjectGuid>{1FB3CF7A-7A26-4BE3-8858-35E714B6E3D3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FAS.UI</RootNamespace>
     <AssemblyName>FAS.UI</AssemblyName>
@@ -61,14 +61,6 @@
       <DependentUpon>EnrollmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions.cs" />
-    <Compile Include="Profile\ProfileListItemDto.cs" />
-    <Compile Include="Profile\ProfileDto.cs" />
-    <Compile Include="Profile\ProfileDetailsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Profile\ProfileDetailsForm.Designer.cs">
-      <DependentUpon>ProfileDetailsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,36 +68,121 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageBoxWrapper.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="SecurityService.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VerificationForm.cs">
+    <Compile Include="Lecturers\Models\LecturerDetailsDto.cs" />
+    <Compile Include="Lecturers\Models\LecturersListItemDto.cs" />
+    <Compile Include="Lecturers\LecturerAddFrom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VerificationForm.designer.cs">
-      <DependentUpon>VerificationForm.cs</DependentUpon>
+    <Compile Include="Lecturers\LecturerAddFrom.Designer.cs">
+      <DependentUpon>LecturerAddFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lecturers\LecturerDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lecturers\LecturerDetailsForm.Designer.cs">
+      <DependentUpon>LecturerDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lecturers\LecturersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lecturers\LecturersForm.Designer.cs">
+      <DependentUpon>LecturersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Seminars\AddSeminarAttendeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seminars\AddSeminarAttendeeForm.Designer.cs">
+      <DependentUpon>AddSeminarAttendeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seminars\AddSeminarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seminars\AddSeminarForm.Designer.cs">
+      <DependentUpon>AddSeminarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seminars\Models\AddSeminarAttendeesListItemDto.cs" />
+    <Compile Include="Seminars\Models\SeminarAttendeesListItemDto.cs" />
+    <Compile Include="Seminars\Models\SeminarLecturerDto.cs" />
+    <Compile Include="Seminars\Models\SeminarsListItemDto.cs" />
+    <Compile Include="Seminars\SeminarsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seminars\SeminarsForm.Designer.cs">
+      <DependentUpon>SeminarsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seminars\SeminarAttendeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seminars\SeminarAttendeesForm.Designer.cs">
+      <DependentUpon>SeminarAttendeesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\Models\StudentsDetailsDto.cs" />
+    <Compile Include="Students\Models\StudentsListItemDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Students\StudentAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Students\StudentAddForm.Designer.cs">
+      <DependentUpon>StudentAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\StudentDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Students\StudentDetailsForm.Designer.cs">
+      <DependentUpon>StudentDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Students\StudentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Students\StudentsForm.Designer.cs">
+      <DependentUpon>StudentsForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="EnrollmentForm.resx">
       <DependentUpon>EnrollmentForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Profile\ProfileDetailsForm.resx">
-      <DependentUpon>ProfileDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="VerificationForm.resx">
-      <DependentUpon>VerificationForm.cs</DependentUpon>
+    <EmbeddedResource Include="Lecturers\LecturerAddFrom.resx">
+      <DependentUpon>LecturerAddFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lecturers\LecturerDetailsForm.resx">
+      <DependentUpon>LecturerDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lecturers\LecturersForm.resx">
+      <DependentUpon>LecturersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seminars\AddSeminarAttendeeForm.resx">
+      <DependentUpon>AddSeminarAttendeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seminars\AddSeminarForm.resx">
+      <DependentUpon>AddSeminarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seminars\SeminarsForm.resx">
+      <DependentUpon>SeminarsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seminars\SeminarAttendeesForm.resx">
+      <DependentUpon>SeminarAttendeesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students\StudentAddForm.resx">
+      <DependentUpon>StudentAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students\StudentDetailsForm.resx">
+      <DependentUpon>StudentDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Students\StudentsForm.resx">
+      <DependentUpon>StudentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FAS.UI.Lecturers.Models.LecturersListItemDto.datasource" />
@@ -140,6 +217,7 @@
       <Name>FAS.Scanner.DigitalPersona</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\logo.png" />
   </ItemGroup>

@@ -1,46 +1,49 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using FAS.Persistence;
-using FAS.UI.Profile;
+using FAS.Admin.UI.Lecturers;
+using FAS.Admin.UI.Seminars;
+using FAS.Admin.UI.Students;
 using FontAwesome.Sharp;
 
-namespace FAS.UI
+namespace FAS.Admin.UI
 {
     public partial class Main : Form
     {
-        private readonly SecurityService _securityService;
         private IconButton _activeButton;
         private readonly Panel _leftBorder;
         private Form _currentChildForm;
 
-        public Main(SecurityService securityService)
+        public Main()
         {
-            _securityService = securityService;
             InitializeComponent();
-
-            var isAuthorized = securityService.IsAuthorized();
-            if (!isAuthorized)
-                return;
-            ProfileName.Text = securityService.CurrentLecturerFullName;
-
 
             _leftBorder = new Panel { Size = new Size(7, 60) };
             Menu.Controls.Add(_leftBorder);
-            OnSessionsMenuBtnClick(SessionsMenuBtn, null);
+            OnStudentsMenuBtnClick(StudentsMenuBtn, null);
         }
 
 
-        private void OnSessionsMenuBtnClick(object sender, EventArgs e)
+        private void OnStudentsMenuBtnClick(object sender, EventArgs e)
         {
             ActiveButton((IconButton)sender);
-            //OpenChildForm(DependencyResolver.Resolve<StudentsForm>());
+            OpenChildForm(DependencyResolver.Resolve<StudentsForm>());
+        }
+        private void OnLecturerMenuBtnClick(object sender, EventArgs e)
+        {
+            ActiveButton((IconButton)sender);
+            OpenChildForm(DependencyResolver.Resolve<LecturersForm>());
         }
 
+        private void OnSeminarMenuBtnClick(object sender, EventArgs e)
+        {
+            ActiveButton((IconButton)sender);
+            OpenChildForm(DependencyResolver.Resolve<SeminarsForm>());
+        }
 
         private void OnHomeMenuBtnClick(object sender, EventArgs e)
         {
-            //OpenChildForm(DependencyResolver.Resolve<StudentsForm>());
+            OpenChildForm(DependencyResolver.Resolve<StudentsForm>());
         }
 
         private void ActiveButton(IconButton button)
@@ -74,12 +77,6 @@ namespace FAS.UI
             Desktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-        }
-
-        private void ProfileBtn_Click(object sender, EventArgs e)
-        {
-            var lecturerDetailsForm = new ProfileDetailsForm(_securityService.CurrentLecturerId, DependencyResolver.Resolve<IQueryDao>());
-            lecturerDetailsForm.ShowDialog();
         }
     }
 }

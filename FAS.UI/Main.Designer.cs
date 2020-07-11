@@ -31,21 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.Menu = new System.Windows.Forms.Panel();
-            this.SeminarMenuBtn = new FontAwesome.Sharp.IconButton();
-            this.LecturerMenuBtn = new FontAwesome.Sharp.IconButton();
-            this.StudentsMenuBtn = new FontAwesome.Sharp.IconButton();
+            this.SessionsMenuBtn = new FontAwesome.Sharp.IconButton();
             this.Logo = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LogoBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ProfileName = new System.Windows.Forms.Label();
             this.ProfileBtn = new FontAwesome.Sharp.IconButton();
             this.HomeMenuBtn = new FontAwesome.Sharp.IconButton();
             this.Desktop = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.ProfileName = new System.Windows.Forms.Label();
             this.studentsListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Menu.SuspendLayout();
             this.Logo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentsListItemDtoBindingSource)).BeginInit();
@@ -55,9 +53,7 @@
             // 
             this.Menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
             this.Menu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Menu.Controls.Add(this.SeminarMenuBtn);
-            this.Menu.Controls.Add(this.LecturerMenuBtn);
-            this.Menu.Controls.Add(this.StudentsMenuBtn);
+            this.Menu.Controls.Add(this.SessionsMenuBtn);
             this.Menu.Controls.Add(this.Logo);
             this.Menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.Menu.Location = new System.Drawing.Point(0, 0);
@@ -65,99 +61,49 @@
             this.Menu.Size = new System.Drawing.Size(312, 546);
             this.Menu.TabIndex = 2;
             // 
-            // SeminarMenuBtn
+            // SessionsMenuBtn
             // 
-            this.SeminarMenuBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
-            this.SeminarMenuBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SeminarMenuBtn.FlatAppearance.BorderSize = 0;
-            this.SeminarMenuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SeminarMenuBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.SeminarMenuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SeminarMenuBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.SeminarMenuBtn.IconChar = FontAwesome.Sharp.IconChar.ChalkboardTeacher;
-            this.SeminarMenuBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
-            this.SeminarMenuBtn.IconSize = 32;
-            this.SeminarMenuBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SeminarMenuBtn.Location = new System.Drawing.Point(0, 353);
-            this.SeminarMenuBtn.Name = "SeminarMenuBtn";
-            this.SeminarMenuBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.SeminarMenuBtn.Rotation = 0D;
-            this.SeminarMenuBtn.Size = new System.Drawing.Size(310, 75);
-            this.SeminarMenuBtn.TabIndex = 4;
-            this.SeminarMenuBtn.Text = "Seminars";
-            this.SeminarMenuBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SeminarMenuBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SeminarMenuBtn.UseVisualStyleBackColor = false;
-            this.SeminarMenuBtn.Click += new System.EventHandler(this.OnSeminarMenuBtnClick);
-            // 
-            // LecturerMenuBtn
-            // 
-            this.LecturerMenuBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
-            this.LecturerMenuBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LecturerMenuBtn.FlatAppearance.BorderSize = 0;
-            this.LecturerMenuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LecturerMenuBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.LecturerMenuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LecturerMenuBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.LecturerMenuBtn.IconChar = FontAwesome.Sharp.IconChar.Gavel;
-            this.LecturerMenuBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
-            this.LecturerMenuBtn.IconSize = 32;
-            this.LecturerMenuBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LecturerMenuBtn.Location = new System.Drawing.Point(0, 278);
-            this.LecturerMenuBtn.Name = "LecturerMenuBtn";
-            this.LecturerMenuBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.LecturerMenuBtn.Rotation = 0D;
-            this.LecturerMenuBtn.Size = new System.Drawing.Size(310, 75);
-            this.LecturerMenuBtn.TabIndex = 3;
-            this.LecturerMenuBtn.Text = "Lecturers";
-            this.LecturerMenuBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LecturerMenuBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.LecturerMenuBtn.UseVisualStyleBackColor = false;
-            this.LecturerMenuBtn.Click += new System.EventHandler(this.OnLecturerMenuBtnClick);
-            // 
-            // StudentsMenuBtn
-            // 
-            this.StudentsMenuBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
-            this.StudentsMenuBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.StudentsMenuBtn.FlatAppearance.BorderSize = 0;
-            this.StudentsMenuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StudentsMenuBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.StudentsMenuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentsMenuBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
-            this.StudentsMenuBtn.IconChar = FontAwesome.Sharp.IconChar.UserGraduate;
-            this.StudentsMenuBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
-            this.StudentsMenuBtn.IconSize = 32;
-            this.StudentsMenuBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StudentsMenuBtn.Location = new System.Drawing.Point(0, 203);
-            this.StudentsMenuBtn.Name = "StudentsMenuBtn";
-            this.StudentsMenuBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.StudentsMenuBtn.Rotation = 0D;
-            this.StudentsMenuBtn.Size = new System.Drawing.Size(310, 75);
-            this.StudentsMenuBtn.TabIndex = 1;
-            this.StudentsMenuBtn.Text = "Students";
-            this.StudentsMenuBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.StudentsMenuBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.StudentsMenuBtn.UseVisualStyleBackColor = false;
-            this.StudentsMenuBtn.Click += new System.EventHandler(this.OnStudentsMenuBtnClick);
+            this.SessionsMenuBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
+            this.SessionsMenuBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SessionsMenuBtn.FlatAppearance.BorderSize = 0;
+            this.SessionsMenuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SessionsMenuBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.SessionsMenuBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SessionsMenuBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.SessionsMenuBtn.IconChar = FontAwesome.Sharp.IconChar.Clock;
+            this.SessionsMenuBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.SessionsMenuBtn.IconSize = 32;
+            this.SessionsMenuBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SessionsMenuBtn.Location = new System.Drawing.Point(0, 203);
+            this.SessionsMenuBtn.Name = "SessionsMenuBtn";
+            this.SessionsMenuBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.SessionsMenuBtn.Rotation = 0D;
+            this.SessionsMenuBtn.Size = new System.Drawing.Size(310, 75);
+            this.SessionsMenuBtn.TabIndex = 1;
+            this.SessionsMenuBtn.Text = "Sessions";
+            this.SessionsMenuBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SessionsMenuBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SessionsMenuBtn.UseVisualStyleBackColor = false;
+            this.SessionsMenuBtn.Click += new System.EventHandler(this.OnSessionsMenuBtnClick);
             // 
             // Logo
             // 
-            this.Logo.Controls.Add(this.pictureBox1);
+            this.Logo.Controls.Add(this.LogoBox);
             this.Logo.Dock = System.Windows.Forms.DockStyle.Top;
             this.Logo.Location = new System.Drawing.Point(0, 0);
             this.Logo.Name = "Logo";
             this.Logo.Size = new System.Drawing.Size(310, 203);
             this.Logo.TabIndex = 0;
             // 
-            // pictureBox1
+            // LogoBox
             // 
-            this.pictureBox1.Image = global::FAS.UI.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(21, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(264, 147);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.LogoBox.Image = global::FAS.UI.Properties.Resources.logo;
+            this.LogoBox.Location = new System.Drawing.Point(21, 22);
+            this.LogoBox.Name = "LogoBox";
+            this.LogoBox.Size = new System.Drawing.Size(264, 147);
+            this.LogoBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LogoBox.TabIndex = 0;
+            this.LogoBox.TabStop = false;
             // 
             // panel1
             // 
@@ -171,6 +117,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(996, 70);
             this.panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.ProfileName);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(594, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(294, 68);
+            this.panel2.TabIndex = 7;
+            // 
+            // ProfileName
+            // 
+            this.ProfileName.AutoSize = true;
+            this.ProfileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfileName.Location = new System.Drawing.Point(91, 21);
+            this.ProfileName.Name = "ProfileName";
+            this.ProfileName.Size = new System.Drawing.Size(97, 25);
+            this.ProfileName.TabIndex = 2;
+            this.ProfileName.Text = "John Doe";
+            this.ProfileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ProfileBtn
             // 
@@ -221,30 +187,6 @@
             this.Desktop.Size = new System.Drawing.Size(996, 476);
             this.Desktop.TabIndex = 4;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.ProfileName);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(594, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(294, 68);
-            this.panel2.TabIndex = 7;
-            // 
-            // ProfileName
-            // 
-            this.ProfileName.AutoSize = true;
-            this.ProfileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProfileName.Location = new System.Drawing.Point(91, 21);
-            this.ProfileName.Name = "ProfileName";
-            this.ProfileName.Size = new System.Drawing.Size(97, 25);
-            this.ProfileName.TabIndex = 2;
-            this.ProfileName.Text = "John Doe";
-            this.ProfileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // studentsListItemDtoBindingSource
-            // 
-            this.studentsListItemDtoBindingSource.DataSource = typeof(FAS.UI.Students.StudentsListItemDto);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -260,7 +202,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Menu.ResumeLayout(false);
             this.Logo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LogoBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -272,14 +214,12 @@
         #endregion
         private System.Windows.Forms.BindingSource studentsListItemDtoBindingSource;
         private System.Windows.Forms.Panel Menu;
-        private FontAwesome.Sharp.IconButton StudentsMenuBtn;
+        private FontAwesome.Sharp.IconButton SessionsMenuBtn;
         private System.Windows.Forms.Panel Logo;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox LogoBox;
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton HomeMenuBtn;
         private System.Windows.Forms.Panel Desktop;
-        private FontAwesome.Sharp.IconButton SeminarMenuBtn;
-        private FontAwesome.Sharp.IconButton LecturerMenuBtn;
         private FontAwesome.Sharp.IconButton ProfileBtn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label ProfileName;

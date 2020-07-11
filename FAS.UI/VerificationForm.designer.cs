@@ -49,7 +49,6 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FAS.UI.Properties.Resources.logo;
-            this.pictureBox1.InitialImage = global::FAS.UI.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(73, 25);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(167, 158);
