@@ -37,13 +37,17 @@
             this.Logo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ProfileBtn = new FontAwesome.Sharp.IconButton();
             this.HomeMenuBtn = new FontAwesome.Sharp.IconButton();
             this.Desktop = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.ProfileName = new System.Windows.Forms.Label();
             this.studentsListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Menu.SuspendLayout();
             this.Logo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentsListItemDtoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +62,7 @@
             this.Menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(312, 587);
+            this.Menu.Size = new System.Drawing.Size(312, 546);
             this.Menu.TabIndex = 2;
             // 
             // SeminarMenuBtn
@@ -159,16 +163,36 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.ProfileBtn);
             this.panel1.Controls.Add(this.HomeMenuBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(312, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1052, 64);
+            this.panel1.Size = new System.Drawing.Size(996, 70);
             this.panel1.TabIndex = 3;
+            // 
+            // ProfileBtn
+            // 
+            this.ProfileBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.ProfileBtn.FlatAppearance.BorderSize = 0;
+            this.ProfileBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProfileBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ProfileBtn.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
+            this.ProfileBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.ProfileBtn.IconSize = 32;
+            this.ProfileBtn.Location = new System.Drawing.Point(888, 0);
+            this.ProfileBtn.Name = "ProfileBtn";
+            this.ProfileBtn.Rotation = 0D;
+            this.ProfileBtn.Size = new System.Drawing.Size(106, 68);
+            this.ProfileBtn.TabIndex = 6;
+            this.ProfileBtn.UseVisualStyleBackColor = true;
+            this.ProfileBtn.Click += new System.EventHandler(this.ProfileBtn_Click);
             // 
             // HomeMenuBtn
             // 
             this.HomeMenuBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
+            this.HomeMenuBtn.Dock = System.Windows.Forms.DockStyle.Left;
             this.HomeMenuBtn.FlatAppearance.BorderSize = 0;
             this.HomeMenuBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeMenuBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
@@ -178,10 +202,10 @@
             this.HomeMenuBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
             this.HomeMenuBtn.IconSize = 32;
             this.HomeMenuBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.HomeMenuBtn.Location = new System.Drawing.Point(3, 10);
+            this.HomeMenuBtn.Location = new System.Drawing.Point(0, 0);
             this.HomeMenuBtn.Name = "HomeMenuBtn";
             this.HomeMenuBtn.Rotation = 0D;
-            this.HomeMenuBtn.Size = new System.Drawing.Size(115, 45);
+            this.HomeMenuBtn.Size = new System.Drawing.Size(108, 68);
             this.HomeMenuBtn.TabIndex = 0;
             this.HomeMenuBtn.Text = "Home";
             this.HomeMenuBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -192,10 +216,30 @@
             // Desktop
             // 
             this.Desktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Desktop.Location = new System.Drawing.Point(312, 64);
+            this.Desktop.Location = new System.Drawing.Point(312, 70);
             this.Desktop.Name = "Desktop";
-            this.Desktop.Size = new System.Drawing.Size(1052, 523);
+            this.Desktop.Size = new System.Drawing.Size(996, 476);
             this.Desktop.TabIndex = 4;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.ProfileName);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(594, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(294, 68);
+            this.panel2.TabIndex = 7;
+            // 
+            // ProfileName
+            // 
+            this.ProfileName.AutoSize = true;
+            this.ProfileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfileName.Location = new System.Drawing.Point(91, 21);
+            this.ProfileName.Name = "ProfileName";
+            this.ProfileName.Size = new System.Drawing.Size(97, 25);
+            this.ProfileName.TabIndex = 2;
+            this.ProfileName.Text = "John Doe";
+            this.ProfileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // studentsListItemDtoBindingSource
             // 
@@ -206,7 +250,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1364, 587);
+            this.ClientSize = new System.Drawing.Size(1308, 546);
             this.Controls.Add(this.Desktop);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Menu);
@@ -218,6 +262,8 @@
             this.Logo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentsListItemDtoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -234,6 +280,9 @@
         private System.Windows.Forms.Panel Desktop;
         private FontAwesome.Sharp.IconButton SeminarMenuBtn;
         private FontAwesome.Sharp.IconButton LecturerMenuBtn;
+        private FontAwesome.Sharp.IconButton ProfileBtn;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label ProfileName;
     }
 }
 

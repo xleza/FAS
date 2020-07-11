@@ -10,7 +10,8 @@ namespace FAS.UI
     public sealed class SecurityService
     {
         private readonly IQueryDao _queryDao;
-        public string CurrentLecturer { get; private set; }
+        public string CurrentLecturerId { get; private set; }
+        public string CurrentLecturerFullName { get; private set; }
 
         public SecurityService(IQueryDao queryDao)
         {
@@ -29,7 +30,8 @@ namespace FAS.UI
                 return false;
 
             var currentLecturer = lecturers.First(lecturer => lecturer.FingerprintChecksum == verificationForm.VerifiedChecksum);
-            CurrentLecturer = currentLecturer.Id;
+            CurrentLecturerId = currentLecturer.Id;
+            CurrentLecturerFullName = currentLecturer.FullName;
 
             return true;
         }

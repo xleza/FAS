@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using FAS.Core;
+using FAS.Persistence;
 using FAS.UI.Lecturers;
 using FAS.UI.Seminars;
 using FAS.UI.Students;
@@ -12,17 +11,21 @@ namespace FAS.UI
 {
     public partial class Main : Form
     {
+        private readonly SecurityService _securityService;
         private IconButton _activeButton;
         private readonly Panel _leftBorder;
         private Form _currentChildForm;
 
         public Main(SecurityService securityService)
         {
+            _securityService = securityService;
             InitializeComponent();
 
             var isAuthorized = securityService.IsAuthorized();
             if (!isAuthorized)
                 return;
+            ProfileName.Text = securityService.CurrentLecturerFullName;
+
 
             _leftBorder = new Panel { Size = new Size(7, 60) };
             Menu.Controls.Add(_leftBorder);
@@ -83,6 +86,12 @@ namespace FAS.UI
             Desktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+        }
+
+        private void ProfileBtn_Click(object sender, EventArgs e)
+        {
+            var lecturerDetailsForm = new ProfileDetailsForm(_securityService.CurrentLecturerId, DependencyResolver.Resolve<IQueryDao>());
+            lecturerDetailsForm.ShowDialog();
         }
     }
 }
