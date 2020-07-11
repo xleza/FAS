@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Windows.Forms;
 using FAS.Core;
@@ -21,8 +22,7 @@ namespace FAS.UI
 
             DependencyResolver.Wire(new NinjectModuleImpl());
 
-
-            Application.Run(new Main());
+            Application.Run(DependencyResolver.Resolve<Main>());
         }
 
         private class NinjectModuleImpl : NinjectModule
@@ -36,6 +36,7 @@ namespace FAS.UI
                     case "DigitalPersona":
                         {
                             Bind(typeof(IFingerprintEnroller)).To<Enroller>();
+                            Bind(typeof(IFingerprintVerifier)).To<Verifier>();
                             break;
                         }
                     default: throw new NotImplementedException($"Device {device} not implemented");
@@ -50,6 +51,9 @@ namespace FAS.UI
                 Bind(typeof(ILecturerDao)).ToConstant(new LecturersDao(connectionString));
 
                 Bind(typeof(ISeminarDao)).ToConstant(new SeminarsDao(connectionString));
+
+                Bind(typeof(SecurityService)).ToConstant(new SecurityService(queryDao));
+
 
                 Bind(typeof(StudentsCommandService)).ToSelf();
             }

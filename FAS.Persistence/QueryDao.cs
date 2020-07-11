@@ -56,6 +56,15 @@ namespace FAS.Persistence
             return ListAsync<T>(tableNameAttribute.Name, where);
         }
 
+        public List<T> List<T>(string where = null) where T : IQueryable
+        {
+            var tableNameAttribute = (TableNameAttribute)typeof(T).GetCustomAttributes().FirstOrDefault(attr => attr is TableNameAttribute);
+            if (tableNameAttribute == null)
+                throw new Exception("Specify table name");
+
+            return List<T>(tableNameAttribute.Name, where);
+        }
+
         protected async Task<T> GetAsync<T>((string name, DbType type, object value) id, string tableName)
         {
             var propertyNames = new List<string>();
@@ -123,7 +132,38 @@ namespace FAS.Persistence
                     }
                 }
             }
+            return result;
+        }
 
+        private List<T> List<T>(string tableName, string where)
+        {
+            var propertyNames = new List<string>();
+            var properties = typeof(T).GetProperties();
+            foreach (var property in typeof(T).GetProperties())
+            {
+                if (!TypeMapping.ContainsKey(property.PropertyType.Name))
+                    throw new NotSupportedException($"Can't store type {property.PropertyType.Name}");
+
+                propertyNames.Add($"[{property.Name}]");
+            }
+
+            var sql = $@"SELECT {string.Join(",", propertyNames)} FROM {tableName}";
+            if (!string.IsNullOrWhiteSpace(where))
+                sql += $" WHERE {where}";
+
+            var result = new List<T>();
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(CreateInstance<T>(reader, properties));
+                    }
+                }
+            }
             return result;
         }
 

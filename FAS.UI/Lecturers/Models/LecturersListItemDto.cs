@@ -10,5 +10,6 @@ namespace FAS.UI.Lecturers.Models
         public string Id { get; set; }
         public string FullName { get; set; }
         public DateTime BirthDate { get; set; }
+        public byte[] FingerprintChecksum { get; set; }
     }
 }

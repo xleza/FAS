@@ -1,7 +1,7 @@
 ﻿namespace FAS.Core
 {
-    public interface IFingerprintVerifier
+    public interface IFingerprintVerifier : IFingerprintCapturer
     {
-        bool Verify(byte[] arr1, byte[] arr2);
+        bool Verify(byte[] checkSum);
     }
 }

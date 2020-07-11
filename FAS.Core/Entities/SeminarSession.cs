@@ -39,16 +39,16 @@ namespace FAS.Core.Entities
             if (Status == SessionStatus.Finished)
                 throw new DomainException("Can't add attendee at finished session");
 
-            var verifiedStudent = registeredStudents.FirstOrDefault(student => verifier.Verify(student.FingerprintChecksum, cmd.FingerprintChecksum));
+            //var verifiedStudent = registeredStudents.FirstOrDefault(student => verifier.Verify(student.FingerprintChecksum, cmd.FingerprintChecksum));
 
-            if (verifiedStudent == null)
-                throw new DomainException("Fingerprint does not match to any registered student fingerprint");
+            //if (verifiedStudent == null)
+            //    throw new DomainException("Fingerprint does not match to any registered student fingerprint");
 
-            Attendees.Add(new SessionAttendee
-            {
-                Id = verifiedStudent.Id,
-                AttendeeStartTime = DateTime.Now
-            });
+            //Attendees.Add(new SessionAttendee
+            //{
+            //    Id = verifiedStudent.Id,
+            //    AttendeeStartTime = DateTime.Now
+            //});
         }
     }
 }

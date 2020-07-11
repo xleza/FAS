@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using FAS.Core;
 using FAS.UI.Lecturers;
 using FAS.UI.Seminars;
 using FAS.UI.Students;
@@ -14,14 +16,19 @@ namespace FAS.UI
         private readonly Panel _leftBorder;
         private Form _currentChildForm;
 
-        public Main()
+        public Main(SecurityService securityService)
         {
             InitializeComponent();
+
+            var isAuthorized = securityService.IsAuthorized();
+            if (!isAuthorized)
+                return;
 
             _leftBorder = new Panel { Size = new Size(7, 60) };
             Menu.Controls.Add(_leftBorder);
             OnStudentsMenuBtnClick(StudentsMenuBtn, null);
         }
+
 
         private void OnStudentsMenuBtnClick(object sender, EventArgs e)
         {
@@ -33,7 +40,7 @@ namespace FAS.UI
             ActiveButton((IconButton)sender);
             OpenChildForm(DependencyResolver.Resolve<LecturersForm>());
         }
-        
+
         private void OnSeminarMenuBtnClick(object sender, EventArgs e)
         {
             ActiveButton((IconButton)sender);

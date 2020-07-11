@@ -88,6 +88,8 @@
     <Compile Include="Lecturers\LecturersForm.Designer.cs">
       <DependentUpon>LecturersForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="SecurityService.cs" />
     <Compile Include="Seminars\AddSeminarAttendeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,7 +120,6 @@
     </Compile>
     <Compile Include="Students\Models\StudentsDetailsDto.cs" />
     <Compile Include="Students\Models\StudentsListItemDto.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Students\StudentAddForm.cs">
       <SubType>Form</SubType>
@@ -137,6 +138,12 @@
     </Compile>
     <Compile Include="Students\StudentsForm.Designer.cs">
       <DependentUpon>StudentsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerificationForm.designer.cs">
+      <DependentUpon>VerificationForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="EnrollmentForm.resx">
       <DependentUpon>EnrollmentForm.cs</DependentUpon>
@@ -183,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Students\StudentsForm.resx">
       <DependentUpon>StudentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerificationForm.resx">
+      <DependentUpon>VerificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FAS.UI.Lecturers.Models.LecturersListItemDto.datasource" />
