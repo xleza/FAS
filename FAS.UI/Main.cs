@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using FAS.Persistence;
 using FAS.UI.Profile;
+using FAS.UI.Sessions;
 using FontAwesome.Sharp;
 
 namespace FAS.UI
@@ -21,7 +22,8 @@ namespace FAS.UI
 
             var isAuthorized = securityService.IsAuthorized();
             if (!isAuthorized)
-                return;
+                Environment.Exit(0);
+
             ProfileName.Text = securityService.CurrentLecturerFullName;
 
 
@@ -34,13 +36,13 @@ namespace FAS.UI
         private void OnSessionsMenuBtnClick(object sender, EventArgs e)
         {
             ActiveButton((IconButton)sender);
-            //OpenChildForm(DependencyResolver.Resolve<StudentsForm>());
+            OpenChildForm(DependencyResolver.Resolve<SessionsForm>());
         }
 
 
         private void OnHomeMenuBtnClick(object sender, EventArgs e)
         {
-            //OpenChildForm(DependencyResolver.Resolve<StudentsForm>());
+            OpenChildForm(DependencyResolver.Resolve<SessionsForm>());
         }
 
         private void ActiveButton(IconButton button)

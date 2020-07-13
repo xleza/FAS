@@ -44,6 +44,24 @@ namespace FAS.Persistence
             }
         }
 
+        protected async Task<bool> ExistByWheresAsync(string where)
+        {
+            if (where == null)
+                throw new ArgumentNullException(nameof(where));
+
+            var sql = $"SELECT Count(*) from {_tableName} WHERE {where}";
+
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    await conn.OpenAsync();
+
+                    return (int)await cmd.ExecuteScalarAsync() > 0;
+                }
+            }
+        }
+
         public virtual async Task AddAsync(TEntity entity)
         {
             var properties = typeof(TEntity).GetProperties();
@@ -52,7 +70,7 @@ namespace FAS.Persistence
 
             foreach (var property in properties)
             {
-                if (!TypeMapping.TryGetValue(property.PropertyType.Name, out var type))
+                if (!TypeMapping.TryGetValue(property.PropertyType, out var type))
                     throw new NotSupportedException($"Can't store type {property.PropertyType.Name}");
 
                 propertyNames.Add($"[{property.Name}]");

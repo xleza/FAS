@@ -2,8 +2,8 @@
 (
 	[Id] VARCHAR(250) NOT NULL PRIMARY KEY,
 	[SeminarId] VARCHAR(250) NOT NULL,
-	[Status] INT NOT NULL,
-	[StartTime] DATETIME NOT NULL,
+	[Status] VARCHAR(50) NOT NULL,
+	[StartTime] DATETIME NULL,
 	[EndTime] DATETIME NULL,
 	FOREIGN KEY (SeminarId) REFERENCES Seminars(Id)
 )

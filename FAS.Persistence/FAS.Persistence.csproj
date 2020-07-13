@@ -50,6 +50,7 @@
     <Compile Include="QueryAttributes\TableNameAttribute.cs" />
     <Compile Include="QueryDao.cs" />
     <Compile Include="SeminarsDao.cs" />
+    <Compile Include="SessionsDao.cs" />
     <Compile Include="StudentsDao.cs" />
   </ItemGroup>
   <ItemGroup>

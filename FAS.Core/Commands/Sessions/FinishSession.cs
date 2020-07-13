@@ -1,4 +1,4 @@
-﻿namespace FAS.Core.Commands.Seminars
+﻿namespace FAS.Core.Commands.Sessions
 {
     public sealed class FinishSession
     {

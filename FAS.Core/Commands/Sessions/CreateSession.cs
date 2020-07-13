@@ -1,4 +1,4 @@
-﻿namespace FAS.Core.Commands.Seminars
+﻿namespace FAS.Core.Commands.Sessions
 {
     public class CreateSession
     {
@@ -8,7 +8,7 @@
         public void Validate()
         {
             Ensure.NotEmpty(Id, nameof(Id));
-            Ensure.NotEmpty(Id, nameof(Id));
+            Ensure.NotEmpty(SeminarId, nameof(SeminarId));
         }
     }
 }

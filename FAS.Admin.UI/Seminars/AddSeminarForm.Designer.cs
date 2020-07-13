@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSeminarForm));
             this.LecturerLbl = new System.Windows.Forms.Label();
-            this.FullNameLbl = new System.Windows.Forms.Label();
+            this.NameLbl = new System.Windows.Forms.Label();
             this.FullNameTxt = new System.Windows.Forms.TextBox();
             this.LecturersCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -49,14 +49,14 @@
             this.LecturerLbl.TabIndex = 22;
             this.LecturerLbl.Text = "Lecturer";
             // 
-            // FullNameLbl
+            // NameLbl
             // 
-            this.FullNameLbl.AutoSize = true;
-            this.FullNameLbl.Location = new System.Drawing.Point(12, 22);
-            this.FullNameLbl.Name = "FullNameLbl";
-            this.FullNameLbl.Size = new System.Drawing.Size(71, 17);
-            this.FullNameLbl.TabIndex = 21;
-            this.FullNameLbl.Text = "Full Name";
+            this.NameLbl.AutoSize = true;
+            this.NameLbl.Location = new System.Drawing.Point(31, 22);
+            this.NameLbl.Name = "NameLbl";
+            this.NameLbl.Size = new System.Drawing.Size(45, 17);
+            this.NameLbl.TabIndex = 21;
+            this.NameLbl.Text = "Name";
             // 
             // FullNameTxt
             // 
@@ -105,12 +105,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 302);
+            this.ClientSize = new System.Drawing.Size(363, 382);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.LecturersCheckedListBox);
             this.Controls.Add(this.LecturerLbl);
-            this.Controls.Add(this.FullNameLbl);
+            this.Controls.Add(this.NameLbl);
             this.Controls.Add(this.FullNameTxt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -128,7 +128,7 @@
         #endregion
 
         private System.Windows.Forms.Label LecturerLbl;
-        private System.Windows.Forms.Label FullNameLbl;
+        private System.Windows.Forms.Label NameLbl;
         private System.Windows.Forms.TextBox FullNameTxt;
         private System.Windows.Forms.CheckedListBox LecturersCheckedListBox;
         private System.Windows.Forms.ErrorProvider errorProvider;

@@ -54,6 +54,7 @@ namespace FAS.UI
                     Close();
                 }
 
+                FingerprintBox.Image = null;
                 listen = true;
             }));
         }

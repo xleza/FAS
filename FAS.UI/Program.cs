@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Windows.Forms;
 using FAS.Core;
@@ -51,6 +50,8 @@ namespace FAS.UI
                 Bind(typeof(ILecturerDao)).ToConstant(new LecturersDao(connectionString));
 
                 Bind(typeof(ISeminarDao)).ToConstant(new SeminarsDao(connectionString));
+
+                Bind(typeof(ISeminarSessionDao)).ToConstant(new SessionsDao(connectionString));
 
                 Bind(typeof(SecurityService)).ToConstant(new SecurityService(queryDao));
 

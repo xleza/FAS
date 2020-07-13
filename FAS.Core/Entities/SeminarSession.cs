@@ -1,28 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using FAS.Core.Commands.Seminars;
+using FAS.Core.Commands.Sessions;
 using FAS.Core.Exceptions;
 
 namespace FAS.Core.Entities
 {
     public class SeminarSession
     {
-        public string Id { get; private set; }
-        public string SeminarId { get; private set; }
-        public List<SessionAttendee> Attendees { get; private set; }
-        public SessionStatus Status { get; private set; }
-        public DateTime StartTime { get; private set; }
-        public DateTime? EndTime { get; private set; }
+        public string Id { get; set; }
+        public string SeminarId { get; set; }
+        public List<SessionAttendee> Attendees { get; set; }
+        public SessionStatus Status { get; set; }
+        public DateTime? StartTime { get; set; }
+        public DateTime? EndTime { get; set; }
+
+        public SeminarSession()
+        {
+
+        }
 
         public SeminarSession(CreateSession cmd)
         {
             Id = cmd.Id;
             SeminarId = cmd.SeminarId;
             Attendees = new List<SessionAttendee>();
-            Status = SessionStatus.Current;
-            StartTime = DateTime.Now;
+            Status = SessionStatus.NotStarted;
+            StartTime = null;
             EndTime = null;
+        }
+
+        public void StartSession()
+        {
+            if (Status == SessionStatus.Running)
+                throw new DomainException("Seminar status is already Running");
+
+            StartTime = DateTime.Now;
+            Status = SessionStatus.Running;
         }
 
         public void FinishSession()
@@ -34,21 +47,21 @@ namespace FAS.Core.Entities
             Status = SessionStatus.Finished;
         }
 
-        public void AddAttendeeSession(AddAttendeeAtSession cmd, IEnumerable<Student> registeredStudents, IFingerprintVerifier verifier)
+        public SessionAttendee AddAttendeeSession(AddAttendeeAtSession cmd)
         {
             if (Status == SessionStatus.Finished)
                 throw new DomainException("Can't add attendee at finished session");
 
-            //var verifiedStudent = registeredStudents.FirstOrDefault(student => verifier.Verify(student.FingerprintChecksum, cmd.FingerprintChecksum));
+            var attendeeToAdd = new SessionAttendee
+            {
+                Id = cmd.Id,
+                SessionId = cmd.SessionId,
+                AttendeeStartTime = DateTime.Now,
+            };
 
-            //if (verifiedStudent == null)
-            //    throw new DomainException("Fingerprint does not match to any registered student fingerprint");
+            Attendees.Add(attendeeToAdd);
 
-            //Attendees.Add(new SessionAttendee
-            //{
-            //    Id = verifiedStudent.Id,
-            //    AttendeeStartTime = DateTime.Now
-            //});
+            return attendeeToAdd;
         }
     }
 }

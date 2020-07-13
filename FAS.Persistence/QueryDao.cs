@@ -18,15 +18,17 @@ namespace FAS.Persistence
             _connectionString = connectionString;
         }
 
-        protected readonly Dictionary<string, DbType> TypeMapping = new Dictionary<string, DbType>
+        protected readonly Dictionary<Type, DbType> TypeMapping = new Dictionary<Type, DbType>
         {
-            { nameof(Int16), DbType.Int16 },
-            { nameof(Int32), DbType.Int32 },
-            { nameof(Int64), DbType.Int64 },
-            { nameof(Decimal), DbType.Decimal },
-            { nameof(String), DbType.String},
-            { nameof(DateTime), DbType.DateTime},
-            { typeof(byte[]).Name , DbType.Binary }
+            { typeof(short), DbType.Int16 },
+            { typeof(int), DbType.Int32 },
+            { typeof(long), DbType.Int64 },
+            { typeof(decimal), DbType.Decimal },
+            { typeof(string), DbType.String},
+            { typeof(Enum), DbType.String},
+            { typeof(DateTime), DbType.DateTime},
+            { typeof(DateTime?), DbType.DateTime},
+            { typeof(byte[]) , DbType.Binary }
         };
 
         public Task<T> GetAsync<T>(object id) where T : IQueryable
@@ -40,7 +42,7 @@ namespace FAS.Persistence
             if (pkProperty == null)
                 throw new Exception("Specify pk");
 
-            var hasType = TypeMapping.TryGetValue(pkProperty.PropertyType.Name, out var pkDbType);
+            var hasType = TypeMapping.TryGetValue(pkProperty.PropertyType, out var pkDbType);
             if (!hasType)
                 throw new NotSupportedException($"Can't work with type {pkProperty.PropertyType.Name}");
 
@@ -72,7 +74,7 @@ namespace FAS.Persistence
 
             foreach (var property in typeof(T).GetProperties())
             {
-                if (!TypeMapping.ContainsKey(property.PropertyType.Name))
+                if (!TypeMapping.ContainsKey(property.PropertyType))
                     throw new NotSupportedException($"Can't work with type {property.PropertyType.Name}");
 
                 propertyNames.Add($"[{property.Name}]");
@@ -103,13 +105,13 @@ namespace FAS.Persistence
             }
         }
 
-        private async Task<List<T>> ListAsync<T>(string tableName, string where)
+        protected async Task<List<T>> ListAsync<T>(string tableName, string where)
         {
             var propertyNames = new List<string>();
             var properties = typeof(T).GetProperties();
             foreach (var property in typeof(T).GetProperties())
             {
-                if (!TypeMapping.ContainsKey(property.PropertyType.Name))
+                if (!TypeMapping.ContainsKey(property.PropertyType))
                     throw new NotSupportedException($"Can't store type {property.PropertyType.Name}");
 
                 propertyNames.Add($"[{property.Name}]");
@@ -141,7 +143,7 @@ namespace FAS.Persistence
             var properties = typeof(T).GetProperties();
             foreach (var property in typeof(T).GetProperties())
             {
-                if (!TypeMapping.ContainsKey(property.PropertyType.Name))
+                if (!TypeMapping.ContainsKey(property.PropertyType))
                     throw new NotSupportedException($"Can't store type {property.PropertyType.Name}");
 
                 propertyNames.Add($"[{property.Name}]");
@@ -172,18 +174,13 @@ namespace FAS.Persistence
             var instance = Activator.CreateInstance<T>();
             foreach (var property in properties)
             {
-                var dbType = TypeMapping[property.PropertyType.Name];
-
-                var dbNull = record[property.Name] is DBNull;
-
-                if (dbNull && property.PropertyType.IsClass)
-                    continue;
-
-                if (dbNull && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
-                    throw new Exception("Can't assign null to not nullable property");
+                var dbType = TypeMapping[property.PropertyType];
 
                 var ordinal = record.GetOrdinal(property.Name);
 
+                if (record[ordinal] is DBNull)
+                    continue;
+                
                 switch (dbType)
                 {
                     case DbType.Int16:

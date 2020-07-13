@@ -6,7 +6,6 @@ SELECT
 	 s.[Name],
 	 l.[Id] as LecturerId,
 	 l.[FullName] as LecturerFullName,
-	 l.FingerprintChecksum as LecturerFingerprint,
      ss.[Status],
      ss.[StartTime],
      ss.[EndTime]

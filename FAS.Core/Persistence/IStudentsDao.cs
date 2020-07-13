@@ -8,6 +8,5 @@ namespace FAS.Core.Persistence
         Task<Student> GetAsync(string id);
         Task<bool> ExistsAsync(string id);
         Task AddAsync(Student student);
-        Task UpdateAsync(Student student);
     }
 }
