@@ -10,13 +10,11 @@ namespace FAS.Core.Services
     {
         private readonly ISeminarSessionDao _sessionsDao;
         private readonly ISeminarDao _seminarDao;
-        private readonly IStudentsDao _studentsDao;
 
-        public SessionsCommandService(ISeminarSessionDao sessionsDao, ISeminarDao seminarDao, IStudentsDao studentsDao)
+        public SessionsCommandService(ISeminarSessionDao sessionsDao, ISeminarDao seminarDao)
         {
             _sessionsDao = sessionsDao;
             _seminarDao = seminarDao;
-            _studentsDao = studentsDao;
         }
 
         public async Task CreateAsync(CreateSession cmd)

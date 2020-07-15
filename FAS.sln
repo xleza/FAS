@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FAS.Persistence", "FAS.Pers
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FAS.DB", "FAS.DB\FAS.DB.sqlproj", "{1B26EC79-A16B-4230-A896-07163BFD3183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FAS.Admin.UI", "FAS.Admin.UI\FAS.Admin.UI.csproj", "{1FB3CF7A-7A26-4BE3-8858-35E714B6E3D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FAS.UI.Admin", "FAS.UI.Admin\FAS.UI.Admin.csproj", "{1FB3CF7A-7A26-4BE3-8858-35E714B6E3D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

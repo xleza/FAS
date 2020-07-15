@@ -9,7 +9,7 @@ using FAS.Scanner.DigitalPersona;
 using Ninject;
 using Ninject.Modules;
 
-namespace FAS.UI
+namespace FAS.UI.Admin
 {
     static class Program
     {
@@ -35,7 +35,6 @@ namespace FAS.UI
                     case "DigitalPersona":
                         {
                             Bind(typeof(IFingerprintEnroller)).To<Enroller>();
-                            Bind(typeof(IFingerprintVerifier)).To<Verifier>();
                             break;
                         }
                     default: throw new NotImplementedException($"Device {device} not implemented");
@@ -50,10 +49,6 @@ namespace FAS.UI
                 Bind(typeof(ILecturerDao)).ToConstant(new LecturersDao(connectionString));
 
                 Bind(typeof(ISeminarDao)).ToConstant(new SeminarsDao(connectionString));
-
-                Bind(typeof(ISeminarSessionDao)).ToConstant(new SessionsDao(connectionString));
-
-                Bind(typeof(SecurityService)).ToConstant(new SecurityService(queryDao));
 
 
                 Bind(typeof(StudentsCommandService)).ToSelf();
