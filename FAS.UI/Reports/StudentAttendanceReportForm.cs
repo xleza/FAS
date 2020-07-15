@@ -8,15 +8,13 @@ namespace FAS.UI.Reports
     public partial class StudentAttendanceReportForm : Form
     {
         private readonly IQueryDao _queryDao;
-        private readonly SecurityService _securityService;
 
         public StudentAttendanceReportForm(IQueryDao queryDao, SecurityService securityService)
         {
             _queryDao = queryDao;
-            _securityService = securityService;
             InitializeComponent();
 
-            SeminarsComboBox.DataSource = queryDao.List<SeminarsListItemDto>();
+            SeminarsComboBox.DataSource = queryDao.List<SeminarsListItemDto>($"LecturerId = '{securityService.CurrentLecturerId}'");
         }
 
         private void AttendanceReportForm_Load(object sender, EventArgs e)

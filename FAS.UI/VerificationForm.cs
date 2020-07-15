@@ -63,7 +63,7 @@ namespace FAS.UI
         {
             Invoke(new Action(() =>
             {
-                MessageBoxWrapper.Info("Fingerprint scanner disconnected");
+                MessageBoxWrapper.Info("Fingerprint scanner connected");
             }));
         }
 
