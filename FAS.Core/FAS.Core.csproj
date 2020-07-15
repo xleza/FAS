@@ -49,6 +49,7 @@
     <Compile Include="Commands\Sessions\FinishSession.cs" />
     <Compile Include="Commands\Seminars\UnRegisterAttendeeAtSeminar.cs" />
     <Compile Include="Commands\Seminars\RegisterAttendeeAtSeminar.cs" />
+    <Compile Include="Commands\Sessions\StartSession.cs" />
     <Compile Include="Commands\Students\ChangeStudent.cs" />
     <Compile Include="Commands\Students\DeleteStudent.cs" />
     <Compile Include="Commands\Students\CreateStudent.cs" />

@@ -78,7 +78,7 @@ namespace FAS.UI
             childForm.Show();
         }
 
-        private void ProfileBtn_Click(object sender, EventArgs e)
+        private void OnProfileBtnClick(object sender, EventArgs e)
         {
             var lecturerDetailsForm = new ProfileDetailsForm(_securityService.CurrentLecturerId, DependencyResolver.Resolve<IQueryDao>());
             lecturerDetailsForm.ShowDialog();

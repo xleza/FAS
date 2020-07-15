@@ -35,21 +35,43 @@ namespace FAS.Core.Services
             await _sessionsDao.AddAsync(new SeminarSession(cmd));
         }
 
-        public async Task AddAttendeeAsync(AddAttendeeAtSession cmd)
+        public async Task StartAsync(StartSession cmd)
         {
             cmd.Validate();
 
-            if (await _studentsDao.ExistsAsync(cmd.Id))
+            var session = await _sessionsDao.GetAsync(cmd.Id);
+            if (session == null)
                 throw new ObjectNotFoundException(cmd.Id, typeof(Student));
+
+            session.Start();
+            await _sessionsDao.UpdateAsync(session);
+        }
+
+        public async Task FinishAsync(FinishSession cmd)
+        {
+            cmd.Validate();
+
+            var session = await _sessionsDao.GetAsync(cmd.Id);
+            if (session == null)
+                throw new ObjectNotFoundException(cmd.Id, typeof(Student));
+
+            session.FinishSession();
+            await _sessionsDao.UpdateAsync(session);
+        }
+
+        public async Task AddAttendeeAsync(AddAttendeeAtSession cmd)
+        {
+            cmd.Validate();
 
             var session = await _sessionsDao.GetAsync(cmd.SessionId);
             if (session == null)
                 throw new ObjectAlreadyExitsException(cmd.SessionId, typeof(SeminarSession));
 
             var seminar = await _seminarDao.GetAsync(session.SeminarId);
+            if (seminar == null)
+                throw new ObjectNotFoundException(session.SeminarId, typeof(SeminarSession));
 
-            var attendee = session.AddAttendeeSession(cmd);
-
+            var attendee = session.AddAttendeeSession(cmd, seminar);
             await _sessionsDao.AddAttendeeAsync(attendee);
         }
     }

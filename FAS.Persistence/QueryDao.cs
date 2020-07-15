@@ -31,24 +31,8 @@ namespace FAS.Persistence
             { typeof(byte[]) , DbType.Binary }
         };
 
-        public Task<T> GetAsync<T>(object id) where T : IQueryable
-        {
-            var tableNameAttribute = (TableNameAttribute)typeof(T).GetCustomAttributes().FirstOrDefault(attr => attr is TableNameAttribute);
-            if (tableNameAttribute == null)
-                throw new Exception("Specify table name");
-
-            var properties = typeof(T).GetProperties();
-            var pkProperty = properties.FirstOrDefault(prop => prop.GetCustomAttributes().Any(att => att is PkAttribute));
-            if (pkProperty == null)
-                throw new Exception("Specify pk");
-
-            var hasType = TypeMapping.TryGetValue(pkProperty.PropertyType, out var pkDbType);
-            if (!hasType)
-                throw new NotSupportedException($"Can't work with type {pkProperty.PropertyType.Name}");
-
-            return GetAsync<T>((pkProperty.Name, pkDbType, id), tableNameAttribute.Name);
-        }
-
+        #region List
+        
         public Task<List<T>> ListAsync<T>(string where = null) where T : IQueryable
         {
             var tableNameAttribute = (TableNameAttribute)typeof(T).GetCustomAttributes().FirstOrDefault(attr => attr is TableNameAttribute);
@@ -67,45 +51,7 @@ namespace FAS.Persistence
             return List<T>(tableNameAttribute.Name, where);
         }
 
-        protected async Task<T> GetAsync<T>((string name, DbType type, object value) id, string tableName)
-        {
-            var propertyNames = new List<string>();
-            var properties = typeof(T).GetProperties();
-
-            foreach (var property in typeof(T).GetProperties())
-            {
-                if (!TypeMapping.ContainsKey(property.PropertyType))
-                    throw new NotSupportedException($"Can't work with type {property.PropertyType.Name}");
-
-                propertyNames.Add($"[{property.Name}]");
-            }
-
-            var sql = $@"SELECT {string.Join(",", propertyNames)} FROM {tableName} WHERE {id.name} = @Id";
-
-            using (var conn = new SqlConnection(_connectionString))
-            {
-                using (var cmd = new SqlCommand(sql, conn))
-                {
-                    cmd.Parameters.Add(new SqlParameter
-                    {
-                        ParameterName = "@Id",
-                        DbType = id.type,
-                        Value = id.value
-                    });
-
-                    await conn.OpenAsync();
-                    var reader = await cmd.ExecuteReaderAsync();
-                    if (!reader.HasRows)
-                        throw new ObjectNotFoundException(id.ToString(), typeof(T));
-
-                    await reader.ReadAsync();
-
-                    return CreateInstance<T>(reader, properties);
-                }
-            }
-        }
-
-        protected async Task<List<T>> ListAsync<T>(string tableName, string where)
+        private async Task<List<T>> ListAsync<T>(string tableName, string where)
         {
             var propertyNames = new List<string>();
             var properties = typeof(T).GetProperties();
@@ -169,6 +115,113 @@ namespace FAS.Persistence
             return result;
         }
 
+        #endregion
+
+        #region Get
+
+        public Task<T> GetAsync<T>(object id) where T : IQueryable
+        {
+            var attributes = ExtractAttributes<T>(id);
+            return GetAsync<T>(attributes.id, attributes.tableName);
+        }
+
+        public T Get<T>(object id) where T : IQueryable
+        {
+            var attributes = ExtractAttributes<T>(id);
+            return Get<T>(attributes.id, attributes.tableName);
+        }
+
+        protected async Task<T> GetAsync<T>((string name, DbType type, object value) id, string tableName)
+        {
+            var sql = ConstructSql<T>(id, tableName);
+            var properties = typeof(T).GetProperties();
+
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.Add(new SqlParameter
+                    {
+                        ParameterName = "@Id",
+                        DbType = id.type,
+                        Value = id.value
+                    });
+
+                    await conn.OpenAsync();
+                    var reader = await cmd.ExecuteReaderAsync();
+                    if (!reader.HasRows)
+                        throw new ObjectNotFoundException(id.ToString(), typeof(T));
+
+                    await reader.ReadAsync();
+
+                    return CreateInstance<T>(reader, properties);
+                }
+            }
+        }
+
+        private T Get<T>((string name, DbType type, object value) id, string tableName)
+        {
+            var sql = ConstructSql<T>(id, tableName);
+            var properties = typeof(T).GetProperties();
+
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.Add(new SqlParameter
+                    {
+                        ParameterName = "@Id",
+                        DbType = id.type,
+                        Value = id.value
+                    });
+
+                    conn.Open();
+                    var reader = cmd.ExecuteReader();
+                    if (!reader.HasRows)
+                        throw new ObjectNotFoundException(id.ToString(), typeof(T));
+
+                    reader.ReadAsync();
+
+                    return CreateInstance<T>(reader, properties);
+                }
+            }
+        }
+
+        private string ConstructSql<T>((string name, DbType type, object value) id, string tableName)
+        {
+            var propertyNames = new List<string>();
+
+            foreach (var property in typeof(T).GetProperties())
+            {
+                if (!TypeMapping.ContainsKey(property.PropertyType))
+                    throw new NotSupportedException($"Can't work with type {property.PropertyType.Name}");
+
+                propertyNames.Add($"[{property.Name}]");
+            }
+
+            return $@"SELECT {string.Join(",", propertyNames)} FROM {tableName} WHERE {id.name} = @Id";
+        }
+
+        private ((string name, DbType type, object value) id, string tableName) ExtractAttributes<T>(object id)
+        {
+            var tableNameAttribute = (TableNameAttribute)typeof(T).GetCustomAttributes().FirstOrDefault(attr => attr is TableNameAttribute);
+            if (tableNameAttribute == null)
+                throw new Exception("Specify table name");
+
+            var properties = typeof(T).GetProperties();
+            var pkProperty = properties.FirstOrDefault(prop => prop.GetCustomAttributes().Any(att => att is PkAttribute));
+            if (pkProperty == null)
+                throw new Exception("Specify pk");
+
+            var hasType = TypeMapping.TryGetValue(pkProperty.PropertyType, out var pkDbType);
+            if (!hasType)
+                throw new NotSupportedException($"Can't work with type {pkProperty.PropertyType.Name}");
+
+            return ((pkProperty.Name, pkDbType, id), tableNameAttribute.Name);
+        }
+
+        #endregion
+
         private T CreateInstance<T>(IDataRecord record, IEnumerable<PropertyInfo> properties)
         {
             var instance = Activator.CreateInstance<T>();
@@ -180,7 +233,7 @@ namespace FAS.Persistence
 
                 if (record[ordinal] is DBNull)
                     continue;
-                
+
                 switch (dbType)
                 {
                     case DbType.Int16:

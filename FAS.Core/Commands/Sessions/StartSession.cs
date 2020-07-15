@@ -1,6 +1,6 @@
 ﻿namespace FAS.Core.Commands.Sessions
 {
-    public sealed class FinishSession
+    public sealed class StartSession
     {
         public string Id { get; set; }
 

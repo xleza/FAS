@@ -31,17 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SessionsForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.StartSessionBtn = new FontAwesome.Sharp.IconButton();
+            this.StopSessionBtn = new FontAwesome.Sharp.IconButton();
             this.SessionDetailsBtn = new FontAwesome.Sharp.IconButton();
             this.RefreshSessionBtn = new FontAwesome.Sharp.IconButton();
             this.SessionAddBtn = new FontAwesome.Sharp.IconButton();
             this.SessionsGrid = new System.Windows.Forms.DataGridView();
+            this.sessionListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lecturerFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sessionListItemDtoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SessionsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sessionListItemDtoBindingSource)).BeginInit();
@@ -50,6 +52,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
+            this.panel1.Controls.Add(this.StartSessionBtn);
+            this.panel1.Controls.Add(this.StopSessionBtn);
             this.panel1.Controls.Add(this.SessionDetailsBtn);
             this.panel1.Controls.Add(this.RefreshSessionBtn);
             this.panel1.Controls.Add(this.SessionAddBtn);
@@ -58,6 +62,40 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(902, 63);
             this.panel1.TabIndex = 0;
+            // 
+            // StartSessionBtn
+            // 
+            this.StartSessionBtn.Enabled = false;
+            this.StartSessionBtn.FlatAppearance.BorderSize = 0;
+            this.StartSessionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartSessionBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.StartSessionBtn.IconChar = FontAwesome.Sharp.IconChar.Play;
+            this.StartSessionBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.StartSessionBtn.IconSize = 48;
+            this.StartSessionBtn.Location = new System.Drawing.Point(159, 7);
+            this.StartSessionBtn.Name = "StartSessionBtn";
+            this.StartSessionBtn.Rotation = 0D;
+            this.StartSessionBtn.Size = new System.Drawing.Size(53, 57);
+            this.StartSessionBtn.TabIndex = 20;
+            this.StartSessionBtn.UseVisualStyleBackColor = true;
+            this.StartSessionBtn.Click += new System.EventHandler(this.OnStartSessionBtnClick);
+            // 
+            // StopSessionBtn
+            // 
+            this.StopSessionBtn.Enabled = false;
+            this.StopSessionBtn.FlatAppearance.BorderSize = 0;
+            this.StopSessionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StopSessionBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.StopSessionBtn.IconChar = FontAwesome.Sharp.IconChar.Stop;
+            this.StopSessionBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.StopSessionBtn.IconSize = 48;
+            this.StopSessionBtn.Location = new System.Drawing.Point(213, 7);
+            this.StopSessionBtn.Name = "StopSessionBtn";
+            this.StopSessionBtn.Rotation = 0D;
+            this.StopSessionBtn.Size = new System.Drawing.Size(53, 57);
+            this.StopSessionBtn.TabIndex = 19;
+            this.StopSessionBtn.UseVisualStyleBackColor = true;
+            this.StopSessionBtn.Click += new System.EventHandler(this.OnFinishSessionBtnClick);
             // 
             // SessionDetailsBtn
             // 
@@ -68,12 +106,13 @@
             this.SessionDetailsBtn.IconChar = FontAwesome.Sharp.IconChar.Eye;
             this.SessionDetailsBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
             this.SessionDetailsBtn.IconSize = 48;
-            this.SessionDetailsBtn.Location = new System.Drawing.Point(55, 6);
+            this.SessionDetailsBtn.Location = new System.Drawing.Point(54, 7);
             this.SessionDetailsBtn.Name = "SessionDetailsBtn";
             this.SessionDetailsBtn.Rotation = 0D;
             this.SessionDetailsBtn.Size = new System.Drawing.Size(53, 57);
             this.SessionDetailsBtn.TabIndex = 18;
             this.SessionDetailsBtn.UseVisualStyleBackColor = true;
+            this.SessionDetailsBtn.Click += new System.EventHandler(this.OnSessionDetailsBtnClick);
             // 
             // RefreshSessionBtn
             // 
@@ -99,7 +138,7 @@
             this.SessionAddBtn.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
             this.SessionAddBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
             this.SessionAddBtn.IconSize = 48;
-            this.SessionAddBtn.Location = new System.Drawing.Point(110, 7);
+            this.SessionAddBtn.Location = new System.Drawing.Point(106, 7);
             this.SessionAddBtn.Name = "SessionAddBtn";
             this.SessionAddBtn.Rotation = 0D;
             this.SessionAddBtn.Size = new System.Drawing.Size(53, 57);
@@ -128,6 +167,11 @@
             this.SessionsGrid.RowTemplate.Height = 24;
             this.SessionsGrid.Size = new System.Drawing.Size(902, 421);
             this.SessionsGrid.TabIndex = 1;
+            this.SessionsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnSessionsGridCellClick);
+            // 
+            // sessionListItemDtoBindingSource
+            // 
+            this.sessionListItemDtoBindingSource.DataSource = typeof(FAS.UI.Sessions.Models.SessionsListItemDto);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -148,7 +192,7 @@
             // lecturerFullNameDataGridViewTextBoxColumn
             // 
             this.lecturerFullNameDataGridViewTextBoxColumn.DataPropertyName = "LecturerFullName";
-            this.lecturerFullNameDataGridViewTextBoxColumn.HeaderText = "LecturerFullName";
+            this.lecturerFullNameDataGridViewTextBoxColumn.HeaderText = "Lecturer";
             this.lecturerFullNameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lecturerFullNameDataGridViewTextBoxColumn.Name = "lecturerFullNameDataGridViewTextBoxColumn";
             this.lecturerFullNameDataGridViewTextBoxColumn.Width = 125;
@@ -164,7 +208,7 @@
             // startTimeDataGridViewTextBoxColumn
             // 
             this.startTimeDataGridViewTextBoxColumn.DataPropertyName = "StartTime";
-            this.startTimeDataGridViewTextBoxColumn.HeaderText = "StartTime";
+            this.startTimeDataGridViewTextBoxColumn.HeaderText = "Start Time";
             this.startTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.startTimeDataGridViewTextBoxColumn.Name = "startTimeDataGridViewTextBoxColumn";
             this.startTimeDataGridViewTextBoxColumn.Width = 125;
@@ -172,14 +216,10 @@
             // endTimeDataGridViewTextBoxColumn
             // 
             this.endTimeDataGridViewTextBoxColumn.DataPropertyName = "EndTime";
-            this.endTimeDataGridViewTextBoxColumn.HeaderText = "EndTime";
+            this.endTimeDataGridViewTextBoxColumn.HeaderText = "End Time";
             this.endTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.endTimeDataGridViewTextBoxColumn.Name = "endTimeDataGridViewTextBoxColumn";
             this.endTimeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // sessionListItemDtoBindingSource
-            // 
-            this.sessionListItemDtoBindingSource.DataSource = typeof(FAS.UI.Sessions.Models.SessionsListItemDto);
             // 
             // SessionsForm
             // 
@@ -206,6 +246,8 @@
         private FontAwesome.Sharp.IconButton RefreshSessionBtn;
         private FontAwesome.Sharp.IconButton SessionAddBtn;
         private System.Windows.Forms.BindingSource sessionListItemDtoBindingSource;
+        private FontAwesome.Sharp.IconButton StartSessionBtn;
+        private FontAwesome.Sharp.IconButton StopSessionBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lecturerFullNameDataGridViewTextBoxColumn;

@@ -10,7 +10,7 @@ namespace FAS.UI
     {
         private readonly IFingerprintVerifier _verifier;
         private readonly IReadOnlyCollection<byte[]> _checksum;
-        private bool listen = true;
+        private bool _listen = true;
 
         public byte[] VerifiedChecksum { get; private set; }
 
@@ -28,9 +28,9 @@ namespace FAS.UI
 
         private void OnCapture(object sender, System.Drawing.Bitmap e)
         {
-            if (!listen)
+            if (!_listen)
                 return;
-            listen = false;
+            _listen = false;
             Invoke(new Action(async () =>
             {
                 FingerprintBox.Image = e;
@@ -55,7 +55,7 @@ namespace FAS.UI
                 }
 
                 FingerprintBox.Image = null;
-                listen = true;
+                _listen = true;
             }));
         }
 

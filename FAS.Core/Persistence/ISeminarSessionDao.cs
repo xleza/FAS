@@ -10,6 +10,7 @@ namespace FAS.Core.Persistence
         Task<bool> ExistsByIdAsync(string id);
         Task<bool> ExistsByWhereAsync(string where);
         Task AddAsync(SeminarSession session);
+        Task UpdateAsync(SeminarSession session);
         Task AddAttendeeAsync(SessionAttendee attendee);
     }
 }

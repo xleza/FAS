@@ -29,7 +29,7 @@ namespace FAS.Persistence
 	                                   ,sa.Id as AttendeeId
 	                                   ,sa.AttendeeStartTime 
                                    FROM [dbo].[SeminarSessions] ss
-                                   INNER JOIN [dbo].[SeminarSessionAttendees] sa
+                                   LEFT JOIN [dbo].[SeminarSessionAttendees] sa
                                    ON ss.Id = sa.SessionId
                                    WHERE ss.Id = @Id";
 
@@ -55,8 +55,8 @@ namespace FAS.Persistence
                             {
                                 Id = id,
                                 SeminarId = reader.GetString(reader.GetOrdinal("SeminarId")),
-                                StartTime = reader.GetDateTime(reader.GetOrdinal("StartTime")),
-                                EndTime = reader[reader.GetOrdinal("AttendeeId")] is null ? default(DateTime?) : reader.GetDateTime(reader.GetOrdinal("EndTime")),
+                                StartTime = reader[reader.GetOrdinal("StartTime")] is DBNull ? default(DateTime?) : reader.GetDateTime(reader.GetOrdinal("StartTime")),
+                                EndTime = reader[reader.GetOrdinal("EndTime")] is DBNull ? default(DateTime?) : reader.GetDateTime(reader.GetOrdinal("EndTime")),
                                 Status = (SessionStatus)Enum.Parse(typeof(SessionStatus), reader.GetString(reader.GetOrdinal("Status"))),
                                 Attendees = new List<SessionAttendee>()
                             };
@@ -69,7 +69,7 @@ namespace FAS.Persistence
                         {
                             Id = reader.GetString(reader.GetOrdinal("AttendeeId")),
                             SessionId = id,
-                            AttendeeStartTime = reader.GetDateTime(reader.GetOrdinal("RegistrationTime")),
+                            AttendeeStartTime = reader.GetDateTime(reader.GetOrdinal("AttendeeStartTime")),
                         });
                     }
 
@@ -105,7 +105,7 @@ namespace FAS.Persistence
                     cmd.Parameters.AddWithValue("@SeminarId", session.SeminarId);
                     cmd.Parameters.AddWithValue("@Status", session.Status.ToString());
 
-                    cmd.Parameters.AddWithValue("@StartTime", (object)session.EndTime ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@StartTime", (object)session.StartTime ?? DBNull.Value);
                     cmd.Parameters.AddWithValue("@EndTime", (object)session.EndTime ?? DBNull.Value);
 
                     await conn.OpenAsync();
@@ -129,9 +129,9 @@ namespace FAS.Persistence
                 {
                     cmd.Parameters.AddWithValue("@Id", session.Id);
                     cmd.Parameters.AddWithValue("@SeminarId", session.SeminarId);
-                    cmd.Parameters.AddWithValue("@Status", session.Status);
-                    cmd.Parameters.AddWithValue("@StartTime", session.StartTime);
-                    cmd.Parameters.AddWithValue("@EndTime", session.EndTime);
+                    cmd.Parameters.AddWithValue("@Status", session.Status.ToString());
+                    cmd.Parameters.AddWithValue("@StartTime", (object)session.StartTime ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@EndTime", (object)session.EndTime ?? DBNull.Value);
 
                     await conn.OpenAsync();
                     await cmd.ExecuteNonQueryAsync();

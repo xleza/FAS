@@ -36,12 +36,25 @@
     <Reference Include="FontAwesome.Sharp, Version=5.13.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.5.13.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.1, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +64,8 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colors.cs" />
@@ -85,8 +100,17 @@
     <Compile Include="Sessions\AddSessionForm.Designer.cs">
       <DependentUpon>AddSessionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sessions\Models\RegisteredAttendeeAtSeminar.cs" />
+    <Compile Include="Sessions\Models\SessionAttendeesListItemDto.cs" />
+    <Compile Include="Sessions\Models\SessionDetailedDto.cs" />
     <Compile Include="Sessions\Models\SessionsListItemDto.cs" />
     <Compile Include="Sessions\Models\SessionsDropDownListItemDto.cs" />
+    <Compile Include="Sessions\SessionDashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sessions\SessionDashboardForm.Designer.cs">
+      <DependentUpon>SessionDashboardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sessions\SessionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +144,9 @@
     </Compile>
     <EmbeddedResource Include="Sessions\AddSessionForm.resx">
       <DependentUpon>AddSessionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sessions\SessionDashboardForm.resx">
+      <DependentUpon>SessionDashboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sessions\SessionsForm.resx">
       <DependentUpon>SessionsForm.cs</DependentUpon>

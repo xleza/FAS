@@ -48,7 +48,7 @@ namespace FAS.Admin.UI.Seminars
 
             foreach (var attendee in seminarAttendeesToAdd ?? new List<AddSeminarAttendeesListItemDto>())
             {
-                Attendees.Items.Add(new ListViewItem(new[] { attendee.Id, attendee.FullName, attendee.BirthDate.ToString() })
+                Attendees.Items.Add(new ListViewItem(new[] { attendee.Id, attendee.FullName, attendee.BirthDate.ToString("MM/dd/yyyy") })
                 {
                     Tag = attendee
                 });

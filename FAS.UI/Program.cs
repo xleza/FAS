@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using FAS.Core;
 using FAS.Core.Persistence;
@@ -16,12 +19,60 @@ namespace FAS.UI
         [STAThread]
         static void Main()
         {
+            //AddComplements();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             DependencyResolver.Wire(new NinjectModuleImpl());
 
             Application.Run(DependencyResolver.Resolve<Main>());
+        }
+
+
+        class Data
+        {
+            public DateTime Date { get; set; }
+            public string DayOfWeek { get; set; }
+            public decimal Value { get; set; }
+        }
+        private static IEnumerable<Data> AddComplements()
+        {
+            var data = new List<Data>
+            {
+                new Data
+                {
+                    Date = new DateTime(2020,7,7),
+                    Value = 40
+                },
+                new Data
+                {
+                    Date = new DateTime(2020,7,9),
+                    Value = 40
+                },
+                new Data
+                {
+                    Date = new DateTime(2020,7,11),
+                    Value = 40
+                }
+            };
+
+            var dateToCheck = DateTime.Now.AddDays(-7);
+            for (var i = 0; i < 7; i++)
+            {
+                var exists = data.Any(x => x.Date.Date == dateToCheck.Date);
+
+                if (!exists)
+                {
+                    data.Add(new Data
+                    {
+                        Date = dateToCheck,
+                        Value = 0
+                    });
+                }
+                dateToCheck = dateToCheck.AddDays(1);
+            }
+
+            return data.OrderBy(x => x.Date);
         }
 
         private class NinjectModuleImpl : NinjectModule

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[SeminarAttendees]
 (
-	[Id] VARCHAR(250) NOT NULL PRIMARY KEY,
+	[Id] VARCHAR(250) NOT NULL,
 	[SeminarId] VARCHAR(250) NOT NULL,
 	[RegistrationTime] DATETIME NOT NULL,
 	FOREIGN KEY (Id) REFERENCES Students(Id),

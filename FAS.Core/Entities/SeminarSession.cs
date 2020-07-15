@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using FAS.Core.Commands.Sessions;
 using FAS.Core.Exceptions;
 
@@ -29,10 +30,13 @@ namespace FAS.Core.Entities
             EndTime = null;
         }
 
-        public void StartSession()
+        public void Start()
         {
             if (Status == SessionStatus.Running)
-                throw new DomainException("Seminar status is already Running");
+                return;
+
+            if (Status == SessionStatus.Finished)
+                throw new DomainException("Session already finished");
 
             StartTime = DateTime.Now;
             Status = SessionStatus.Running;
@@ -41,16 +45,23 @@ namespace FAS.Core.Entities
         public void FinishSession()
         {
             if (Status == SessionStatus.Finished)
-                throw new DomainException("Seminar status is already finished");
+                return;
+
+            if (Status == SessionStatus.NotStarted)
+                throw new DomainException("Session not started");
 
             EndTime = DateTime.Now;
             Status = SessionStatus.Finished;
         }
 
-        public SessionAttendee AddAttendeeSession(AddAttendeeAtSession cmd)
+        public SessionAttendee AddAttendeeSession(AddAttendeeAtSession cmd, Seminar seminar)
         {
-            if (Status == SessionStatus.Finished)
-                throw new DomainException("Can't add attendee at finished session");
+            if (Status != SessionStatus.Running)
+                throw new DomainException($"Can't add attendee at {Status} session");
+
+            var registered = seminar.RegisteredAttendees.Any(x => x.Id == cmd.Id);
+            if (!registered)
+                throw new DomainException($"Attendee {cmd.Id} not registered at seminar");
 
             var attendeeToAdd = new SessionAttendee
             {

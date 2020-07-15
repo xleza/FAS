@@ -7,8 +7,6 @@ namespace FAS.UI
 {
     public static class Extensions
     {
-        public static byte[] ToBytes(this Image self) => (byte[])new ImageConverter().ConvertTo(self, typeof(byte[]));
-
         public static Bitmap ToBitmap(this byte[] self)
         {
             using (var ms = new MemoryStream(self))
@@ -22,15 +20,6 @@ namespace FAS.UI
             await self;
 
             onSuccess();
-        }
-
-        public static async Task<T> OnSuccess<T>(this Task<T> self, Action onSuccess)
-        {
-            var result = await self;
-
-            onSuccess();
-
-            return result;
         }
 
         public static async Task OnError(this Task self, Action<string> onError)

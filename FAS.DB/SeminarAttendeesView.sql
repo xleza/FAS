@@ -3,6 +3,7 @@
 	SELECT 
 	st.Id,
 	st.FullName,
+	st.FingerprintChecksum,
 	sa.SeminarId,
 	sa.RegistrationTime
   FROM [dbo].[SeminarAttendees] sa

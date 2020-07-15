@@ -153,7 +153,7 @@
             this.ProfileBtn.Size = new System.Drawing.Size(106, 68);
             this.ProfileBtn.TabIndex = 6;
             this.ProfileBtn.UseVisualStyleBackColor = true;
-            this.ProfileBtn.Click += new System.EventHandler(this.ProfileBtn_Click);
+            this.ProfileBtn.Click += new System.EventHandler(this.OnProfileBtnClick);
             // 
             // HomeMenuBtn
             // 
