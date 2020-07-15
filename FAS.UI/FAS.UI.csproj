@@ -45,6 +45,24 @@
     <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
     </Reference>
@@ -92,6 +110,14 @@
     </Compile>
     <Compile Include="MessageBoxWrapper.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Reports\Models\SeminarsListItemDto.cs" />
+    <Compile Include="Reports\StudentAttendanceReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\StudentAttendanceReportForm.Designer.cs">
+      <DependentUpon>StudentAttendanceReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Models\StudentsAttendanceReportDto.cs" />
     <Compile Include="SecurityService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessions\AddSessionForm.cs">
@@ -117,6 +143,7 @@
     <Compile Include="Sessions\SessionsForm.Designer.cs">
       <DependentUpon>SessionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="VerificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +169,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\StudentAttendanceReport.rdlc" />
+    <EmbeddedResource Include="Reports\StudentAttendanceReportForm.resx">
+      <DependentUpon>StudentAttendanceReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sessions\AddSessionForm.resx">
       <DependentUpon>AddSessionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +188,11 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\FAS.UI.Lecturers.Models.LecturersListItemDto.datasource" />
     <None Include="Properties\DataSources\FAS.UI.Models.StudentsListItemDto.datasource" />
+    <None Include="Properties\DataSources\FAS.UI.Reports.Models.SeminarsListItemDto.datasource" />
+    <None Include="Properties\DataSources\FAS.UI.Reports.Models.StudentsAttendanceReportDto.datasource" />
+    <None Include="Properties\DataSources\FAS.UI.Reports.Models.StudentsAttendanceReportDto1.datasource" />
+    <None Include="Properties\DataSources\FAS.UI.Reports.Models.StudentsAttendanceReportDto2.datasource" />
+    <None Include="Properties\DataSources\FAS.UI.Reports.Models.StudentsAttendanceReportModel.datasource" />
     <None Include="Properties\DataSources\FAS.UI.Seminars.Models.SeminarAttendeesListItemDto.datasource" />
     <None Include="Properties\DataSources\FAS.UI.Seminars.Models.SeminarsListItemDto.datasource" />
     <None Include="Properties\DataSources\FAS.UI.Sessions.Models.SessionListItemDto.datasource" />
@@ -192,6 +228,20 @@
   <ItemGroup>
     <None Include="Resources\logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

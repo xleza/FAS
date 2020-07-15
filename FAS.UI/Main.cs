@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using FAS.Persistence;
 using FAS.UI.Profile;
+using FAS.UI.Reports;
 using FAS.UI.Sessions;
 using FontAwesome.Sharp;
 
@@ -37,6 +38,12 @@ namespace FAS.UI
         {
             ActiveButton((IconButton)sender);
             OpenChildForm(DependencyResolver.Resolve<SessionsForm>());
+        }
+
+        private void OnReportsBtnClick(object sender, EventArgs e)
+        {
+            ActiveButton((IconButton)sender);
+            OpenChildForm(DependencyResolver.Resolve<StudentAttendanceReportForm>());
         }
 
 

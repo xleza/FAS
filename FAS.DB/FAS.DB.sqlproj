@@ -74,5 +74,6 @@
     <Build Include="SeminarsView.sql" />
     <Build Include="Students.sql" />
     <Build Include="SeminarSessionAttendeesView.sql" />
+    <Build Include="StudentsAttendeesReportView.sql" />
   </ItemGroup>
 </Project>

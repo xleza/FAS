@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.Menu = new System.Windows.Forms.Panel();
+            this.ReportsBtn = new FontAwesome.Sharp.IconButton();
             this.SessionsMenuBtn = new FontAwesome.Sharp.IconButton();
             this.Logo = new System.Windows.Forms.Panel();
             this.LogoBox = new System.Windows.Forms.PictureBox();
@@ -53,6 +54,7 @@
             // 
             this.Menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
             this.Menu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Menu.Controls.Add(this.ReportsBtn);
             this.Menu.Controls.Add(this.SessionsMenuBtn);
             this.Menu.Controls.Add(this.Logo);
             this.Menu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -60,6 +62,31 @@
             this.Menu.Name = "Menu";
             this.Menu.Size = new System.Drawing.Size(312, 546);
             this.Menu.TabIndex = 2;
+            // 
+            // ReportsBtn
+            // 
+            this.ReportsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(239)))), ((int)(((byte)(244)))));
+            this.ReportsBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ReportsBtn.FlatAppearance.BorderSize = 0;
+            this.ReportsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReportsBtn.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.ReportsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportsBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(92)))), ((int)(((byte)(92)))));
+            this.ReportsBtn.IconChar = FontAwesome.Sharp.IconChar.FileAlt;
+            this.ReportsBtn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(144)))), ((int)(((byte)(134)))));
+            this.ReportsBtn.IconSize = 32;
+            this.ReportsBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ReportsBtn.Location = new System.Drawing.Point(0, 278);
+            this.ReportsBtn.Name = "ReportsBtn";
+            this.ReportsBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.ReportsBtn.Rotation = 0D;
+            this.ReportsBtn.Size = new System.Drawing.Size(310, 75);
+            this.ReportsBtn.TabIndex = 2;
+            this.ReportsBtn.Text = "Attendance Report";
+            this.ReportsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ReportsBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ReportsBtn.UseVisualStyleBackColor = false;
+            this.ReportsBtn.Click += new System.EventHandler(this.OnReportsBtnClick);
             // 
             // SessionsMenuBtn
             // 
@@ -223,6 +250,7 @@
         private FontAwesome.Sharp.IconButton ProfileBtn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label ProfileName;
+        private FontAwesome.Sharp.IconButton ReportsBtn;
     }
 }
 
